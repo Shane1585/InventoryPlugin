@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "InventoryProject",
+			"Path": "..\\Source\\InventoryProject.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "InventoryProjectEditor",
+			"Path": "..\\Source\\InventoryProjectEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
