@@ -3,13 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/SceneComponent.h"
-#include "Inventory.generated.h"
+#include "Components/ActorComponent.h"
+
 #include "InventorySlot.h"
 
+#include "Inventory.generated.h"
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class INVENTORYPROJECT_API UInventory : public USceneComponent
+class INVENTORYPROJECT_API UInventory : public UActorComponent
 {
 	GENERATED_BODY()
 
@@ -24,10 +25,6 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-	InventorySlot Inventory[10];
-
-	UPROPERTY(EditAnywhere)
+	
 	TArray<InventorySlot> inventoryData;
-		
 };

@@ -14,16 +14,16 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define INVENTORYPROJECT_Inventory_generated_h
 
-#define FID_Users_D3524091_Documents_GitHub_Plugin2_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_13_INCLASS_NO_PURE_DECLS \
+#define FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUInventory(); \
 	friend struct Z_Construct_UClass_UInventory_Statics; \
 public: \
-	DECLARE_CLASS(UInventory, USceneComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/InventoryProject"), NO_API) \
+	DECLARE_CLASS(UInventory, UActorComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/InventoryProject"), NO_API) \
 	DECLARE_SERIALIZER(UInventory)
 
 
-#define FID_Users_D3524091_Documents_GitHub_Plugin2_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_13_ENHANCED_CONSTRUCTORS \
+#define FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	UInventory(UInventory&&); \
@@ -35,12 +35,12 @@ public: \
 	NO_API virtual ~UInventory();
 
 
-#define FID_Users_D3524091_Documents_GitHub_Plugin2_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_10_PROLOG
-#define FID_Users_D3524091_Documents_GitHub_Plugin2_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_13_GENERATED_BODY \
+#define FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_12_PROLOG
+#define FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_15_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_D3524091_Documents_GitHub_Plugin2_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_13_INCLASS_NO_PURE_DECLS \
-	FID_Users_D3524091_Documents_GitHub_Plugin2_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_13_ENHANCED_CONSTRUCTORS \
+	FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_15_INCLASS_NO_PURE_DECLS \
+	FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -48,7 +48,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> INVENTORYPROJECT_API UClass* StaticClass<class UInventory>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Users_D3524091_Documents_GitHub_Plugin2_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h
+#define CURRENT_FILE_ID FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

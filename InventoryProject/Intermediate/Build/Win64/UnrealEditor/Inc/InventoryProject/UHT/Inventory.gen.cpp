@@ -10,7 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeInventory() {}
 
 // Begin Cross Module References
-ENGINE_API UClass* Z_Construct_UClass_USceneComponent();
+ENGINE_API UClass* Z_Construct_UClass_UActorComponent();
 INVENTORYPROJECT_API UClass* Z_Construct_UClass_UInventory();
 INVENTORYPROJECT_API UClass* Z_Construct_UClass_UInventory_NoRegister();
 UPackage* Z_Construct_UPackage__Script_InventoryProject();
@@ -31,7 +31,6 @@ struct Z_Construct_UClass_UInventory_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
 		{ "BlueprintSpawnableComponent", "" },
 		{ "ClassGroupNames", "Custom" },
-		{ "HideCategories", "Trigger PhysicsVolume" },
 		{ "IncludePath", "Inventory.h" },
 		{ "ModuleRelativePath", "Inventory.h" },
 	};
@@ -43,7 +42,7 @@ struct Z_Construct_UClass_UInventory_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 UObject* (*const Z_Construct_UClass_UInventory_Statics::DependentSingletons[])() = {
-	(UObject* (*)())Z_Construct_UClass_USceneComponent,
+	(UObject* (*)())Z_Construct_UClass_UActorComponent,
 	(UObject* (*)())Z_Construct_UPackage__Script_InventoryProject,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UInventory_Statics::DependentSingletons) < 16);
@@ -79,14 +78,14 @@ UInventory::~UInventory() {}
 // End Class UInventory
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_D3524091_Documents_GitHub_Plugin2_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_Statics
+struct Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UInventory, UInventory::StaticClass, TEXT("UInventory"), &Z_Registration_Info_UClass_UInventory, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventory), 2664316322U) },
+		{ Z_Construct_UClass_UInventory, UInventory::StaticClass, TEXT("UInventory"), &Z_Registration_Info_UClass_UInventory, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventory), 728358369U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_D3524091_Documents_GitHub_Plugin2_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_4130031636(TEXT("/Script/InventoryProject"),
-	Z_CompiledInDeferFile_FID_Users_D3524091_Documents_GitHub_Plugin2_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_D3524091_Documents_GitHub_Plugin2_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_2814692454(TEXT("/Script/InventoryProject"),
+	Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Inventory_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

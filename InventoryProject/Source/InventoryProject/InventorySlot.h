@@ -15,9 +15,8 @@ public:
 	Item item;
 	
 	InventorySlot();
-	~InventorySlot();
 
-	UFUNCTION(BlueprintCallable,EditAnywhere)
+	UFUNCTION(BlueprintCallable, EditAnywhere)
 	Item GetItem();
 
 };

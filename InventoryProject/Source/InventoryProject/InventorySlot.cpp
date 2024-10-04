@@ -7,10 +7,6 @@ InventorySlot::InventorySlot()
 {
 }
 
-InventorySlot::~InventorySlot()
-{
-}
-
 Item InventorySlot::GetItem()
 {
     return item;
