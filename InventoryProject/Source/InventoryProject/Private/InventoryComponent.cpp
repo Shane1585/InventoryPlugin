@@ -49,9 +49,29 @@ bool UInventoryComponent::HasItem(FString Name)
 bool UInventoryComponent::AddItem(UItem* Item, int Amount)
 {
 	UInventorySlot slot = UInventorySlot();
-	slot.Item = Item;
+	slot.SetItem(Item);
 	Slots.Add(&slot);
 	return true;
+}
+
+bool UInventoryComponent::RemoveItem(FString Name, int Amount)
+{
+	for(int i = 0; i < Slots.Num(); i++)
+	{
+		UInventorySlot* ThisSlot = Slots[i];
+		if(ThisSlot->GetItem()->GetName() == Name)
+		{
+			Slots.RemoveAt(i);
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+TArray<UInventorySlot*> UInventoryComponent::GetInventorySlots()
+{
+	return Slots;
 }
 
 

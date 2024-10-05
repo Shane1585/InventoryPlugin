@@ -9,7 +9,7 @@
 /**
  * This class stores the name and other important details about a single item.
  */
-UCLASS()
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class INVENTORYPROJECT_API UItem : public UObject
 {
 	GENERATED_BODY()

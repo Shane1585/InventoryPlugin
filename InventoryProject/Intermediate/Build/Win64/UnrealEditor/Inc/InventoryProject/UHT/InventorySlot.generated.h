@@ -16,6 +16,7 @@ class UItem;
 #define INVENTORYPROJECT_InventorySlot_generated_h
 
 #define FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlot_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execGetName); \
 	DECLARE_FUNCTION(execSetItem); \
 	DECLARE_FUNCTION(execGetItem);
 

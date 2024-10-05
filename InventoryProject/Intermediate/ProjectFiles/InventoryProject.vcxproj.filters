@@ -59,12 +59,24 @@
     <Filter Include="Source\InventoryProject\Private">
       <UniqueIdentifier>{AA9CB8CD-44D6-3412-86E1-05944A55DB83}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\InventoryProject\Private\InventoryComponent.cpp">
+      <Filter>Source\InventoryProject\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\InventoryProject\Private\InventorySlot.cpp">
+      <Filter>Source\InventoryProject\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\InventoryProject\Private\Item.cpp">
       <Filter>Source\InventoryProject\Private</Filter>
     </ClCompile>
     <Filter Include="Source\InventoryProject\Public">
       <UniqueIdentifier>{D4BDE094-019B-365D-8B17-7A295432AB48}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\InventoryProject\Public\InventoryComponent.h">
+      <Filter>Source\InventoryProject\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\InventoryProject\Public\InventorySlot.h">
+      <Filter>Source\InventoryProject\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\InventoryProject\Public\Item.h">
       <Filter>Source\InventoryProject\Public</Filter>
     </ClInclude>

@@ -67,7 +67,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5BB426A0-1377-3C5C-898F-637E1181A6ED}</ProjectGuid>
+    <ProjectGuid>{9E29E17C-CF82-3645-B4DC-050009AD41BB}</ProjectGuid>
     <RootNamespace>InventoryProject</RootNamespace>
   </PropertyGroup>
   <Import Project="UECommon.props" />
@@ -273,9 +273,17 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\InventoryProject\InventoryProjectGameMode.h"/>
+    <ClCompile Include="..\..\Source\InventoryProject\Private\InventoryComponent.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\InventoryProject\Private\InventorySlot.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="..\..\Source\InventoryProject\Private\Item.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClInclude Include="..\..\Source\InventoryProject\Public\InventoryComponent.h"/>
+    <ClInclude Include="..\..\Source\InventoryProject\Public\InventorySlot.h"/>
     <ClInclude Include="..\..\Source\InventoryProject\Public\Item.h"/>
     <None Include="..\..\Plugins\InventorySystem\InventorySystem.uplugin"/>
     <None Include="..\..\Plugins\InventorySystem\Resources\Icon128.png"/>

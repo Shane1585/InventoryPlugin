@@ -9,7 +9,7 @@
 /**
  * Stores information about a single slot in the inventory
  */
-UCLASS()
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class INVENTORYPROJECT_API UInventorySlot : public UObject
 {
 	GENERATED_BODY()
@@ -28,9 +28,15 @@ public:
 	UItem* GetItem();
 
 	/**
-	 * 
 	 * @param NewItem The item to store in this slot
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory slot details")
 	void SetItem(UItem* NewItem);
+
+
+	/**
+	 * @return The name of the item in this slot
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory slot details")
+	FString GetName();
 };
