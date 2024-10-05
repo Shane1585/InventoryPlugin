@@ -3,20 +3,19 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
-
 #include "InventorySlot.h"
+#include "Components/ActorComponent.h"
+#include "InventoryComponent.generated.h"
 
-#include "Inventory.generated.h"
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class INVENTORYPROJECT_API UInventory : public UActorComponent
+class INVENTORYPROJECT_API UInventoryComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this component's properties
-	UInventory();
+	UInventoryComponent();
 
 protected:
 	// Called when the game starts
@@ -25,6 +24,12 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	
-	TArray<InventorySlot> inventoryData;
+
+
+	TArray<UInventorySlot*> Slots;
+
+	bool HasItem(FString Name);
+	bool AddItem(UItem* Item, int Amount);
+	bool RemoveItem(FString Name, int Amount);
+	TArray<UInventorySlot> GetInventorySlots();
 };

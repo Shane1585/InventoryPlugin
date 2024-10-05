@@ -35,12 +35,6 @@
     <Filter Include="Source\InventoryProject">
       <UniqueIdentifier>{6B0466FE-0C03-3C97-B404-1E89E2840F49}</UniqueIdentifier>
     </Filter>
-    <ClCompile Include="..\..\Source\InventoryProject\Inventory.cpp">
-      <Filter>Source\InventoryProject</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\InventoryProject\Inventory.h">
-      <Filter>Source\InventoryProject</Filter>
-    </ClInclude>
     <None Include="..\..\Source\InventoryProject\InventoryProject.Build.cs">
       <Filter>Source\InventoryProject</Filter>
     </None>
@@ -62,17 +56,17 @@
     <ClInclude Include="..\..\Source\InventoryProject\InventoryProjectGameMode.h">
       <Filter>Source\InventoryProject</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\InventoryProject\InventorySlot.cpp">
-      <Filter>Source\InventoryProject</Filter>
+    <Filter Include="Source\InventoryProject\Private">
+      <UniqueIdentifier>{AA9CB8CD-44D6-3412-86E1-05944A55DB83}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\InventoryProject\Private\Item.cpp">
+      <Filter>Source\InventoryProject\Private</Filter>
     </ClCompile>
-    <ClInclude Include="..\..\Source\InventoryProject\InventorySlot.h">
-      <Filter>Source\InventoryProject</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\InventoryProject\Item.cpp">
-      <Filter>Source\InventoryProject</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\InventoryProject\Item.h">
-      <Filter>Source\InventoryProject</Filter>
+    <Filter Include="Source\InventoryProject\Public">
+      <UniqueIdentifier>{D4BDE094-019B-365D-8B17-7A295432AB48}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\InventoryProject\Public\Item.h">
+      <Filter>Source\InventoryProject\Public</Filter>
     </ClInclude>
     <Filter Include="Plugins">
       <UniqueIdentifier>{BB38096A-B391-30DC-A0D4-4F3EA6B44507}</UniqueIdentifier>
