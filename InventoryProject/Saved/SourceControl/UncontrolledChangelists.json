@@ -6,9 +6,11 @@
 			"description": "Default Uncontrolled Changelist",
 			"files": [
 				"F:/Unreal/InventoryPlugin/InventoryProject/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset",
-				"F:/Unreal/InventoryPlugin/InventoryProject/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/P3/O43ETCZTFMLWWH1CJ941H2.uasset",
 				"F:/Unreal/InventoryPlugin/InventoryProject/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/38/KSOR9ABRNCXQ70SUYKX44Q.uasset",
-				"F:/Unreal/InventoryPlugin/InventoryProject/Content/TestCube.uasset"
+				"F:/Unreal/InventoryPlugin/InventoryProject/Content/TestCube.uasset",
+				"F:/Unreal/InventoryPlugin/InventoryProject/Content/Cube_Blueprint.uasset",
+				"F:/Unreal/InventoryPlugin/InventoryProject/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/5/KA/KQE1PR4AE06VS963SO3QLX.uasset",
+				"F:/Unreal/InventoryPlugin/InventoryProject/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/P3/O43ETCZTFMLWWH1CJ941H2.uasset"
 			]
 		}
 	]

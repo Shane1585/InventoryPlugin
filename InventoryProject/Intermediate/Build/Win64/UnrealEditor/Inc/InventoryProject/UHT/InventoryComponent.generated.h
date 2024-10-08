@@ -9,8 +9,8 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-class UInventorySlot;
-class UItem;
+struct FUInventorySlot;
+struct FUItem;
 #ifdef INVENTORYPROJECT_InventoryComponent_generated_h
 #error "InventoryComponent.generated.h already included, missing '#pragma once' in InventoryComponent.h"
 #endif

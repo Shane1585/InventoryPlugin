@@ -9,28 +9,20 @@
 /**
  * This class stores the name and other important details about a single item.
  */
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class INVENTORYPROJECT_API UItem : public UObject
+USTRUCT(BlueprintType, Blueprintable)
+struct INVENTORYPROJECT_API FUItem
 {
 	GENERATED_BODY()
 	
-public:
 	/**
 	 * Display name for item
 	 */
-	UPROPERTY(Blueprintable, EditAnywhere, Category="Item Detail")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
 	FString Name;
 
-	/**
-	 * @return Display name of the item
-	 */
-	UFUNCTION(BlueprintCallable, Category="Item Detail")
-	FString GetName();
-
-	/**
-	 * @param NewName The name you want to set as the display name
-	 */
-	UFUNCTION(BlueprintCallable, Category="Item Detail")
-	void SetName(FString NewName);
+	FUItem()
+	{
+		Name = "";
+	}
 
 };

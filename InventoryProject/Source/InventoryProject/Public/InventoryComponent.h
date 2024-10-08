@@ -29,8 +29,8 @@ public:
 	/**
 	 * List of slots containing items and other slot data (such as amount of an item) in this inventory
 	 */
-	UPROPERTY(Blueprintable, EditAnywhere, Category="Inventory")
-	TArray<UInventorySlot*> Slots;
+	UPROPERTY(BlueprintType, EditAnywhere, Category="Inventory")
+	TArray<FUInventorySlot> Slots;
 
 	/** 
 	 * @param Name Name or the item to check in the array
@@ -47,7 +47,7 @@ public:
 	 * @return True if successfully added
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
-	bool AddItem(UItem* Item, int Amount);
+	bool AddItem(FUItem Item, int Amount);
 
 	/**
 	 * Removes the amount of the item from a slot if it exists. If there are none left, it will destroy the slot
@@ -62,5 +62,5 @@ public:
 	 * @return A list of slots within this inventory
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
-	TArray<UInventorySlot*> GetInventorySlots();
+	TArray<FUInventorySlot> GetInventorySlots();
 };

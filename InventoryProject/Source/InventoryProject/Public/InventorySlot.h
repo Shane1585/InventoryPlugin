@@ -9,34 +9,19 @@
 /**
  * Stores information about a single slot in the inventory
  */
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class INVENTORYPROJECT_API UInventorySlot : public UObject
+USTRUCT(BlueprintType, Blueprintable)
+struct INVENTORYPROJECT_API FUInventorySlot
 {
 	GENERATED_BODY()
 
-public:
 	/**
 	 * Item held in this slot
 	 */
-	UPROPERTY(Blueprintable, EditAnywhere, Category = "Inventory slot details")
-	UItem* Item;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory slot details")
+	FUItem Item;
 
-	/**
-	 * @return The item held in this slot
-	 */
-	UFUNCTION(BlueprintCallable, Category="Inventory slot details")
-	UItem* GetItem();
-
-	/**
-	 * @param NewItem The item to store in this slot
-	 */
-	UFUNCTION(BlueprintCallable, Category="Inventory slot details")
-	void SetItem(UItem* NewItem);
-
-
-	/**
-	 * @return The name of the item in this slot
-	 */
-	UFUNCTION(BlueprintCallable, Category="Inventory slot details")
-	FString GetName();
+	FUInventorySlot()
+	{
+		Item = FUItem();
+	}
 };
