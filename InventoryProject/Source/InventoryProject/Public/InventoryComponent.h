@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "InventorySlot.h"
 #include "Components/ActorComponent.h"
+#include "InventorySlotUIWrapper.h"
 #include "InventoryComponent.generated.h"
 
 
@@ -30,7 +31,7 @@ public:
 	 * List of slots containing items and other slot data (such as amount of an item) in this inventory
 	 */
 	UPROPERTY(BlueprintType, EditAnywhere, Category="Inventory")
-	TArray<FUInventorySlot> Slots;
+	TArray<FInventorySlot> Slots;
 
 	/** 
 	 * @param Name Name or the item to check in the array
@@ -48,7 +49,7 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	bool AddItem(FUItem Item, int Amount);
-
+	
 	/**
 	 * Removes the amount of the item from a slot if it exists. If there are none left, it will destroy the slot
 	 * @param Name The name of the item to remove
@@ -62,5 +63,5 @@ public:
 	 * @return A list of slots within this inventory
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
-	TArray<FUInventorySlot> GetInventorySlots();
+	TArray<UInventorySlotUIWrapper*> GetInventorySlots();
 };

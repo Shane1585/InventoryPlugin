@@ -11,26 +11,26 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeInventorySlot() {}
 
 // Begin Cross Module References
-INVENTORYPROJECT_API UScriptStruct* Z_Construct_UScriptStruct_FUInventorySlot();
+INVENTORYPROJECT_API UScriptStruct* Z_Construct_UScriptStruct_FInventorySlot();
 INVENTORYPROJECT_API UScriptStruct* Z_Construct_UScriptStruct_FUItem();
 UPackage* Z_Construct_UPackage__Script_InventoryProject();
 // End Cross Module References
 
-// Begin ScriptStruct FUInventorySlot
-static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_UInventorySlot;
-class UScriptStruct* FUInventorySlot::StaticStruct()
+// Begin ScriptStruct FInventorySlot
+static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_InventorySlot;
+class UScriptStruct* FInventorySlot::StaticStruct()
 {
-	if (!Z_Registration_Info_UScriptStruct_UInventorySlot.OuterSingleton)
+	if (!Z_Registration_Info_UScriptStruct_InventorySlot.OuterSingleton)
 	{
-		Z_Registration_Info_UScriptStruct_UInventorySlot.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FUInventorySlot, (UObject*)Z_Construct_UPackage__Script_InventoryProject(), TEXT("UInventorySlot"));
+		Z_Registration_Info_UScriptStruct_InventorySlot.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FInventorySlot, (UObject*)Z_Construct_UPackage__Script_InventoryProject(), TEXT("InventorySlot"));
 	}
-	return Z_Registration_Info_UScriptStruct_UInventorySlot.OuterSingleton;
+	return Z_Registration_Info_UScriptStruct_InventorySlot.OuterSingleton;
 }
-template<> INVENTORYPROJECT_API UScriptStruct* StaticStruct<FUInventorySlot>()
+template<> INVENTORYPROJECT_API UScriptStruct* StaticStruct<FInventorySlot>()
 {
-	return FUInventorySlot::StaticStruct();
+	return FInventorySlot::StaticStruct();
 }
-struct Z_Construct_UScriptStruct_FUInventorySlot_Statics
+struct Z_Construct_UScriptStruct_FInventorySlot_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
@@ -59,46 +59,46 @@ struct Z_Construct_UScriptStruct_FUInventorySlot_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static void* NewStructOps()
 	{
-		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FUInventorySlot>();
+		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FInventorySlot>();
 	}
 	static const UECodeGen_Private::FStructParams StructParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FUInventorySlot_Statics::NewProp_Item = { "Item", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FUInventorySlot, Item), Z_Construct_UScriptStruct_FUItem, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Item_MetaData), NewProp_Item_MetaData) }; // 2354291606
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FUInventorySlot_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FUInventorySlot_Statics::NewProp_Item,
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FInventorySlot_Statics::NewProp_Item = { "Item", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FInventorySlot, Item), Z_Construct_UScriptStruct_FUItem, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Item_MetaData), NewProp_Item_MetaData) }; // 2354291606
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FInventorySlot_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FInventorySlot_Statics::NewProp_Item,
 };
-static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FUInventorySlot_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FUInventorySlot_Statics::StructParams = {
+static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FInventorySlot_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FInventorySlot_Statics::StructParams = {
 	(UObject* (*)())Z_Construct_UPackage__Script_InventoryProject,
 	nullptr,
 	&NewStructOps,
-	"UInventorySlot",
-	Z_Construct_UScriptStruct_FUInventorySlot_Statics::PropPointers,
-	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FUInventorySlot_Statics::PropPointers),
-	sizeof(FUInventorySlot),
-	alignof(FUInventorySlot),
+	"InventorySlot",
+	Z_Construct_UScriptStruct_FInventorySlot_Statics::PropPointers,
+	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FInventorySlot_Statics::PropPointers),
+	sizeof(FInventorySlot),
+	alignof(FInventorySlot),
 	RF_Public|RF_Transient|RF_MarkAsNative,
 	EStructFlags(0x00000201),
-	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FUInventorySlot_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FUInventorySlot_Statics::Struct_MetaDataParams)
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FInventorySlot_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FInventorySlot_Statics::Struct_MetaDataParams)
 };
-UScriptStruct* Z_Construct_UScriptStruct_FUInventorySlot()
+UScriptStruct* Z_Construct_UScriptStruct_FInventorySlot()
 {
-	if (!Z_Registration_Info_UScriptStruct_UInventorySlot.InnerSingleton)
+	if (!Z_Registration_Info_UScriptStruct_InventorySlot.InnerSingleton)
 	{
-		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_UInventorySlot.InnerSingleton, Z_Construct_UScriptStruct_FUInventorySlot_Statics::StructParams);
+		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_InventorySlot.InnerSingleton, Z_Construct_UScriptStruct_FInventorySlot_Statics::StructParams);
 	}
-	return Z_Registration_Info_UScriptStruct_UInventorySlot.InnerSingleton;
+	return Z_Registration_Info_UScriptStruct_InventorySlot.InnerSingleton;
 }
-// End ScriptStruct FUInventorySlot
+// End ScriptStruct FInventorySlot
 
 // Begin Registration
 struct Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlot_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FUInventorySlot::StaticStruct, Z_Construct_UScriptStruct_FUInventorySlot_Statics::NewStructOps, TEXT("UInventorySlot"), &Z_Registration_Info_UScriptStruct_UInventorySlot, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FUInventorySlot), 1058102134U) },
+		{ FInventorySlot::StaticStruct, Z_Construct_UScriptStruct_FInventorySlot_Statics::NewStructOps, TEXT("InventorySlot"), &Z_Registration_Info_UScriptStruct_InventorySlot, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FInventorySlot), 318571531U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlot_h_914402339(TEXT("/Script/InventoryProject"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlot_h_3510259745(TEXT("/Script/InventoryProject"),
 	nullptr, 0,
 	Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlot_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlot_h_Statics::ScriptStructInfo),
 	nullptr, 0);

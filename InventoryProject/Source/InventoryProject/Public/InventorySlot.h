@@ -10,8 +10,9 @@
  * Stores information about a single slot in the inventory
  */
 USTRUCT(BlueprintType, Blueprintable)
-struct INVENTORYPROJECT_API FUInventorySlot
+struct INVENTORYPROJECT_API FInventorySlot
 {
+
 	GENERATED_BODY()
 
 	/**
@@ -19,8 +20,8 @@ struct INVENTORYPROJECT_API FUInventorySlot
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory slot details")
 	FUItem Item;
-
-	FUInventorySlot()
+	
+	FInventorySlot()
 	{
 		Item = FUItem();
 	}

@@ -36,7 +36,7 @@ bool UInventoryComponent::HasItem(FString Name)
 {
 	for(int i = 0; i < Slots.Num(); i++)
 	{
-		FUInventorySlot ThisSlot = Slots[i];
+		FInventorySlot ThisSlot = Slots[i];
 		if(ThisSlot.Item.Name==Name)
 		{
 			return true;
@@ -48,7 +48,7 @@ bool UInventoryComponent::HasItem(FString Name)
 
 bool UInventoryComponent::AddItem(FUItem Item, int Amount)
 {
-	FUInventorySlot slot = FUInventorySlot();
+	FInventorySlot slot = FInventorySlot();
 	slot.Item = Item;
 	Slots.Add(slot);
 	return true;
@@ -58,7 +58,7 @@ bool UInventoryComponent::RemoveItem(FString Name, int Amount)
 {
 	for(int i = 0; i < Slots.Num(); i++)
 	{
-		FUInventorySlot ThisSlot = Slots[i];
+		FInventorySlot ThisSlot = Slots[i];
 		if(ThisSlot.Item.Name == Name)
 		{
 			Slots.RemoveAt(i);
@@ -69,9 +69,18 @@ bool UInventoryComponent::RemoveItem(FString Name, int Amount)
 	return false;
 }
 
-TArray<FUInventorySlot> UInventoryComponent::GetInventorySlots()
+TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots()
 {
-	return Slots;
+	TArray<UInventorySlotUIWrapper*> InventorySlots;
+	
+	for(int i = 0; i < Slots.Num(); i++)
+	{
+		UInventorySlotUIWrapper* Wrapper = NewObject<UInventorySlotUIWrapper>();
+		Wrapper->Init(Slots[i]);
+		InventorySlots.Add(Wrapper);
+	}
+
+	return InventorySlots;
 }
 
 

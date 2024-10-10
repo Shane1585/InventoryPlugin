@@ -14,12 +14,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define INVENTORYPROJECT_InventorySlot_generated_h
 
-#define FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlot_h_15_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FUInventorySlot_Statics; \
+#define FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlot_h_16_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FInventorySlot_Statics; \
 	static class UScriptStruct* StaticStruct();
 
 
-template<> INVENTORYPROJECT_API UScriptStruct* StaticStruct<struct FUInventorySlot>();
+template<> INVENTORYPROJECT_API UScriptStruct* StaticStruct<struct FInventorySlot>();
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlot_h
