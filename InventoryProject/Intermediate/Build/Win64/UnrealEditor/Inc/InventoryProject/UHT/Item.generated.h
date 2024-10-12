@@ -15,11 +15,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define INVENTORYPROJECT_Item_generated_h
 
 #define FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_Item_h_15_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FUItem_Statics; \
+	friend struct Z_Construct_UScriptStruct_FItem_Statics; \
 	static class UScriptStruct* StaticStruct();
 
 
-template<> INVENTORYPROJECT_API UScriptStruct* StaticStruct<struct FUItem>();
+template<> INVENTORYPROJECT_API UScriptStruct* StaticStruct<struct FItem>();
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_Item_h

@@ -77,7 +77,7 @@ struct Z_Construct_UFunction_UInventorySlotUIWrapper_Init_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UInventorySlotUIWrapper_Init_Statics::NewProp_SlotData = { "SlotData", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(InventorySlotUIWrapper_eventInit_Parms, SlotData), Z_Construct_UScriptStruct_FInventorySlot, METADATA_PARAMS(0, nullptr) }; // 318571531
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UInventorySlotUIWrapper_Init_Statics::NewProp_SlotData = { "SlotData", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(InventorySlotUIWrapper_eventInit_Parms, SlotData), Z_Construct_UScriptStruct_FInventorySlot, METADATA_PARAMS(0, nullptr) }; // 115307985
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UInventorySlotUIWrapper_Init_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UInventorySlotUIWrapper_Init_Statics::NewProp_SlotData,
 };
@@ -140,7 +140,7 @@ struct Z_Construct_UClass_UInventorySlotUIWrapper_Statics
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UInventorySlotUIWrapper_GetName, "GetName" }, // 1537147948
-		{ &Z_Construct_UFunction_UInventorySlotUIWrapper_Init, "Init" }, // 628670651
+		{ &Z_Construct_UFunction_UInventorySlotUIWrapper_Init, "Init" }, // 981487020
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -148,7 +148,7 @@ struct Z_Construct_UClass_UInventorySlotUIWrapper_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UInventorySlotUIWrapper_Statics::NewProp_Slot = { "Slot", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventorySlotUIWrapper, Slot), Z_Construct_UScriptStruct_FInventorySlot, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Slot_MetaData), NewProp_Slot_MetaData) }; // 318571531
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UInventorySlotUIWrapper_Statics::NewProp_Slot = { "Slot", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventorySlotUIWrapper, Slot), Z_Construct_UScriptStruct_FInventorySlot, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Slot_MetaData), NewProp_Slot_MetaData) }; // 115307985
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UInventorySlotUIWrapper_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventorySlotUIWrapper_Statics::NewProp_Slot,
 };
@@ -194,10 +194,10 @@ UInventorySlotUIWrapper::~UInventorySlotUIWrapper() {}
 struct Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlotUIWrapper_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UInventorySlotUIWrapper, UInventorySlotUIWrapper::StaticClass, TEXT("UInventorySlotUIWrapper"), &Z_Registration_Info_UClass_UInventorySlotUIWrapper, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventorySlotUIWrapper), 242907745U) },
+		{ Z_Construct_UClass_UInventorySlotUIWrapper, UInventorySlotUIWrapper::StaticClass, TEXT("UInventorySlotUIWrapper"), &Z_Registration_Info_UClass_UInventorySlotUIWrapper, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventorySlotUIWrapper), 3483431036U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlotUIWrapper_h_1398905979(TEXT("/Script/InventoryProject"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlotUIWrapper_h_4146430380(TEXT("/Script/InventoryProject"),
 	Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlotUIWrapper_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlotUIWrapper_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

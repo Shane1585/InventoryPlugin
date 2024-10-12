@@ -17,7 +17,7 @@ INVENTORYPROJECT_API UClass* Z_Construct_UClass_UInventoryComponent();
 INVENTORYPROJECT_API UClass* Z_Construct_UClass_UInventoryComponent_NoRegister();
 INVENTORYPROJECT_API UClass* Z_Construct_UClass_UInventorySlotUIWrapper_NoRegister();
 INVENTORYPROJECT_API UScriptStruct* Z_Construct_UScriptStruct_FInventorySlot();
-INVENTORYPROJECT_API UScriptStruct* Z_Construct_UScriptStruct_FUItem();
+INVENTORYPROJECT_API UScriptStruct* Z_Construct_UScriptStruct_FItem();
 UPackage* Z_Construct_UPackage__Script_InventoryProject();
 // End Cross Module References
 
@@ -26,7 +26,7 @@ struct Z_Construct_UFunction_UInventoryComponent_AddItem_Statics
 {
 	struct InventoryComponent_eventAddItem_Parms
 	{
-		FUItem Item;
+		FItem Item;
 		int32 Amount;
 		bool ReturnValue;
 	};
@@ -49,7 +49,7 @@ struct Z_Construct_UFunction_UInventoryComponent_AddItem_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UInventoryComponent_AddItem_Statics::NewProp_Item = { "Item", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(InventoryComponent_eventAddItem_Parms, Item), Z_Construct_UScriptStruct_FUItem, METADATA_PARAMS(0, nullptr) }; // 2354291606
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UInventoryComponent_AddItem_Statics::NewProp_Item = { "Item", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(InventoryComponent_eventAddItem_Parms, Item), Z_Construct_UScriptStruct_FItem, METADATA_PARAMS(0, nullptr) }; // 3598457457
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UInventoryComponent_AddItem_Statics::NewProp_Amount = { "Amount", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(InventoryComponent_eventAddItem_Parms, Amount), METADATA_PARAMS(0, nullptr) };
 void Z_Construct_UFunction_UInventoryComponent_AddItem_Statics::NewProp_ReturnValue_SetBit(void* Obj)
 {
@@ -75,7 +75,7 @@ UFunction* Z_Construct_UFunction_UInventoryComponent_AddItem()
 }
 DEFINE_FUNCTION(UInventoryComponent::execAddItem)
 {
-	P_GET_STRUCT(FUItem,Z_Param_Item);
+	P_GET_STRUCT(FItem,Z_Param_Item);
 	P_GET_PROPERTY(FIntProperty,Z_Param_Amount);
 	P_FINISH;
 	P_NATIVE_BEGIN;
@@ -83,6 +83,102 @@ DEFINE_FUNCTION(UInventoryComponent::execAddItem)
 	P_NATIVE_END;
 }
 // End Class UInventoryComponent Function AddItem
+
+// Begin Class UInventoryComponent Function GetCarryWeightLimit
+struct Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics
+{
+	struct InventoryComponent_eventGetCarryWeightLimit_Parms
+	{
+		float ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Inventory" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n\x09 * @return How much weight can be carried before becoming encumbered. 0 if disabled, or negative.\n\x09 */" },
+#endif
+		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@return How much weight can be carried before becoming encumbered. 0 if disabled, or negative." },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(InventoryComponent_eventGetCarryWeightLimit_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UInventoryComponent, nullptr, "GetCarryWeightLimit", nullptr, nullptr, Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics::PropPointers), sizeof(Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics::InventoryComponent_eventGetCarryWeightLimit_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics::Function_MetaDataParams), Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics::InventoryComponent_eventGetCarryWeightLimit_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UInventoryComponent::execGetCarryWeightLimit)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(float*)Z_Param__Result=P_THIS->GetCarryWeightLimit();
+	P_NATIVE_END;
+}
+// End Class UInventoryComponent Function GetCarryWeightLimit
+
+// Begin Class UInventoryComponent Function GetCurrentWeight
+struct Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics
+{
+	struct InventoryComponent_eventGetCurrentWeight_Parms
+	{
+		float ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Inventory" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n\x09 * @return The amount of weight being carried in the inventory.\n\x09 */" },
+#endif
+		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@return The amount of weight being carried in the inventory." },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(InventoryComponent_eventGetCurrentWeight_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UInventoryComponent, nullptr, "GetCurrentWeight", nullptr, nullptr, Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics::PropPointers), sizeof(Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics::InventoryComponent_eventGetCurrentWeight_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics::Function_MetaDataParams), Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics::InventoryComponent_eventGetCurrentWeight_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UInventoryComponent::execGetCurrentWeight)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(float*)Z_Param__Result=P_THIS->GetCurrentWeight();
+	P_NATIVE_END;
+}
+// End Class UInventoryComponent Function GetCurrentWeight
 
 // Begin Class UInventoryComponent Function GetInventorySlots
 struct Z_Construct_UFunction_UInventoryComponent_GetInventorySlots_Statics
@@ -134,6 +230,107 @@ DEFINE_FUNCTION(UInventoryComponent::execGetInventorySlots)
 	P_NATIVE_END;
 }
 // End Class UInventoryComponent Function GetInventorySlots
+
+// Begin Class UInventoryComponent Function GetRemainingWeight
+struct Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics
+{
+	struct InventoryComponent_eventGetRemainingWeight_Parms
+	{
+		float ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Inventory" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n\x09 * @return the weight that is still available (can be negative). 0 if carry weight is disabled.\n\x09 */" },
+#endif
+		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@return the weight that is still available (can be negative). 0 if carry weight is disabled." },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(InventoryComponent_eventGetRemainingWeight_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UInventoryComponent, nullptr, "GetRemainingWeight", nullptr, nullptr, Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics::PropPointers), sizeof(Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics::InventoryComponent_eventGetRemainingWeight_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics::Function_MetaDataParams), Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics::InventoryComponent_eventGetRemainingWeight_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UInventoryComponent::execGetRemainingWeight)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(float*)Z_Param__Result=P_THIS->GetRemainingWeight();
+	P_NATIVE_END;
+}
+// End Class UInventoryComponent Function GetRemainingWeight
+
+// Begin Class UInventoryComponent Function HasAWeightLimit
+struct Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics
+{
+	struct InventoryComponent_eventHasAWeightLimit_Parms
+	{
+		bool ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Inventory" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n\x09 * @return true if weight limit is enabled.\n\x09 */" },
+#endif
+		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@return true if weight limit is enabled." },
+#endif
+	};
+#endif // WITH_METADATA
+	static void NewProp_ReturnValue_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+void Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+{
+	((InventoryComponent_eventHasAWeightLimit_Parms*)Obj)->ReturnValue = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(InventoryComponent_eventHasAWeightLimit_Parms), &Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UInventoryComponent, nullptr, "HasAWeightLimit", nullptr, nullptr, Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::PropPointers), sizeof(Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::InventoryComponent_eventHasAWeightLimit_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::Function_MetaDataParams), Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::InventoryComponent_eventHasAWeightLimit_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UInventoryComponent::execHasAWeightLimit)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(bool*)Z_Param__Result=P_THIS->HasAWeightLimit();
+	P_NATIVE_END;
+}
+// End Class UInventoryComponent Function HasAWeightLimit
 
 // Begin Class UInventoryComponent Function HasItem
 struct Z_Construct_UFunction_UInventoryComponent_HasItem_Statics
@@ -262,7 +459,11 @@ void UInventoryComponent::StaticRegisterNativesUInventoryComponent()
 	UClass* Class = UInventoryComponent::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "AddItem", &UInventoryComponent::execAddItem },
+		{ "GetCarryWeightLimit", &UInventoryComponent::execGetCarryWeightLimit },
+		{ "GetCurrentWeight", &UInventoryComponent::execGetCurrentWeight },
 		{ "GetInventorySlots", &UInventoryComponent::execGetInventorySlots },
+		{ "GetRemainingWeight", &UInventoryComponent::execGetRemainingWeight },
+		{ "HasAWeightLimit", &UInventoryComponent::execHasAWeightLimit },
 		{ "HasItem", &UInventoryComponent::execHasItem },
 		{ "RemoveItem", &UInventoryComponent::execRemoveItem },
 	};
@@ -293,14 +494,30 @@ struct Z_Construct_UClass_UInventoryComponent_Statics
 		{ "ToolTip", "List of slots containing items and other slot data (such as amount of an item) in this inventory" },
 #endif
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CarryWeightLimit_MetaData[] = {
+		{ "BlueprintType", "true" },
+		{ "Category", "Item Detail" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n\x09 * Amount of weight that can be carried in the inventory\n\x09 *\n\x09 * Can trigger encumbrance if inventory is overweight when a new item is picked up\n\x09 *\n\x09 * Carry weight is disabled with a value of 0 or less in this variable.\n\x09 */" },
+#endif
+		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Amount of weight that can be carried in the inventory\n\nCan trigger encumbrance if inventory is overweight when a new item is picked up\n\nCarry weight is disabled with a value of 0 or less in this variable." },
+#endif
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStructPropertyParams NewProp_Slots_Inner;
 	static const UECodeGen_Private::FArrayPropertyParams NewProp_Slots;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_CarryWeightLimit;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UInventoryComponent_AddItem, "AddItem" }, // 3736526131
+		{ &Z_Construct_UFunction_UInventoryComponent_AddItem, "AddItem" }, // 3171742423
+		{ &Z_Construct_UFunction_UInventoryComponent_GetCarryWeightLimit, "GetCarryWeightLimit" }, // 2109697426
+		{ &Z_Construct_UFunction_UInventoryComponent_GetCurrentWeight, "GetCurrentWeight" }, // 3483285814
 		{ &Z_Construct_UFunction_UInventoryComponent_GetInventorySlots, "GetInventorySlots" }, // 1089501253
+		{ &Z_Construct_UFunction_UInventoryComponent_GetRemainingWeight, "GetRemainingWeight" }, // 1954224371
+		{ &Z_Construct_UFunction_UInventoryComponent_HasAWeightLimit, "HasAWeightLimit" }, // 1942098992
 		{ &Z_Construct_UFunction_UInventoryComponent_HasItem, "HasItem" }, // 3696644145
 		{ &Z_Construct_UFunction_UInventoryComponent_RemoveItem, "RemoveItem" }, // 1083738361
 	};
@@ -310,11 +527,13 @@ struct Z_Construct_UClass_UInventoryComponent_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Slots_Inner = { "Slots", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FInventorySlot, METADATA_PARAMS(0, nullptr) }; // 318571531
-const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Slots = { "Slots", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryComponent, Slots), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Slots_MetaData), NewProp_Slots_MetaData) }; // 318571531
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Slots_Inner = { "Slots", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FInventorySlot, METADATA_PARAMS(0, nullptr) }; // 115307985
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Slots = { "Slots", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryComponent, Slots), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Slots_MetaData), NewProp_Slots_MetaData) }; // 115307985
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_CarryWeightLimit = { "CarryWeightLimit", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryComponent, CarryWeightLimit), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CarryWeightLimit_MetaData), NewProp_CarryWeightLimit_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UInventoryComponent_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Slots_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Slots,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryComponent_Statics::NewProp_CarryWeightLimit,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UInventoryComponent_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_UInventoryComponent_Statics::DependentSingletons[])() = {
@@ -357,10 +576,10 @@ UInventoryComponent::~UInventoryComponent() {}
 struct Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventoryComponent_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UInventoryComponent, UInventoryComponent::StaticClass, TEXT("UInventoryComponent"), &Z_Registration_Info_UClass_UInventoryComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryComponent), 4133746054U) },
+		{ Z_Construct_UClass_UInventoryComponent, UInventoryComponent::StaticClass, TEXT("UInventoryComponent"), &Z_Registration_Info_UClass_UInventoryComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryComponent), 190002498U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventoryComponent_h_49128848(TEXT("/Script/InventoryProject"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventoryComponent_h_956993(TEXT("/Script/InventoryProject"),
 	Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventoryComponent_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventoryComponent_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

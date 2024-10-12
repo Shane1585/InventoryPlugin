@@ -38,10 +38,10 @@ public:
 	 *
 	 * Can trigger encumbrance if inventory is overweight when a new item is picked up
 	 *
-	 * Carry weight is disabled with a value of -1 in this variable.
+	 * Carry weight is disabled with a value of 0 or less in this variable.
 	 */
 	UPROPERTY(BlueprintType, EditAnywhere, BlueprintReadWrite, Category="Item Detail")
-	float CarryWeight;
+	float CarryWeightLimit = 0;
 
 	/** 
 	 * @param Name Name or the item to check in the array

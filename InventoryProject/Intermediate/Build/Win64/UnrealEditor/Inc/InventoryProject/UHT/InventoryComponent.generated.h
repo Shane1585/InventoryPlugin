@@ -10,13 +10,17 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class UInventorySlotUIWrapper;
-struct FUItem;
+struct FItem;
 #ifdef INVENTORYPROJECT_InventoryComponent_generated_h
 #error "InventoryComponent.generated.h already included, missing '#pragma once' in InventoryComponent.h"
 #endif
 #define INVENTORYPROJECT_InventoryComponent_generated_h
 
 #define FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventoryComponent_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execGetRemainingWeight); \
+	DECLARE_FUNCTION(execGetCurrentWeight); \
+	DECLARE_FUNCTION(execGetCarryWeightLimit); \
+	DECLARE_FUNCTION(execHasAWeightLimit); \
 	DECLARE_FUNCTION(execGetInventorySlots); \
 	DECLARE_FUNCTION(execRemoveItem); \
 	DECLARE_FUNCTION(execAddItem); \
