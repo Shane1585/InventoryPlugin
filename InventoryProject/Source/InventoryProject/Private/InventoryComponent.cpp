@@ -83,5 +83,39 @@ TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots()
 	return InventorySlots;
 }
 
+bool UInventoryComponent::HasAWeightLimit()
+{
+	//check if carry limit is below 0
+	return false;
+}
+
+float UInventoryComponent::GetCarryWeightLimit()
+{
+	//find weight limit exists (return 0 if diabled)
+	// return the weight limit if enabled.
+	return 0;
+}
+
+float UInventoryComponent::GetCurrentWeight()
+{
+	//create something to store a running total of the weight calculation
+
+	//loop through your slots
+	
+		//use slots to get the weight of each item
+
+	// return your total weight
+	return 0;
+}
+
+float UInventoryComponent::GetRemainingWeight()
+{
+	//weight limit - current weight
+	// return the result (0 if no weight limit)
+	return 0;
+}
+
+
+
 
 

@@ -75,13 +75,29 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	TArray<UInventorySlotUIWrapper*> GetInventorySlots();
 
+	/**
+	 * @return true if weight limit is enabled.
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	bool HasAWeightLimit();
+	
+	/**
+	 * @return How much weight can be carried before becoming encumbered. 0 if disabled, or negative.
+	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	float GetCarryWeightLimit();
 
+	/**
+	 * @return The amount of weight being carried in the inventory.
+	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	float GetCurrentWeight();
 
+	/**
+	 * @return the weight that is still available (can be negative). 0 if carry weight is disabled.
+	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	float GetRemainingWeight();
+	
 	
 };

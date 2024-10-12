@@ -65,6 +65,9 @@
     <ClCompile Include="..\..\Source\InventoryProject\Private\InventorySlot.cpp">
       <Filter>Source\InventoryProject\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\InventoryProject\Private\InventorySlotUIWrapper.cpp">
+      <Filter>Source\InventoryProject\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\InventoryProject\Private\Item.cpp">
       <Filter>Source\InventoryProject\Private</Filter>
     </ClCompile>
@@ -75,6 +78,9 @@
       <Filter>Source\InventoryProject\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\InventoryProject\Public\InventorySlot.h">
+      <Filter>Source\InventoryProject\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\InventoryProject\Public\InventorySlotUIWrapper.h">
       <Filter>Source\InventoryProject\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\InventoryProject\Public\Item.h">
