@@ -10,7 +10,7 @@
  * This class stores the name and other important details about a single item.
  */
 USTRUCT(BlueprintType, Blueprintable)
-struct INVENTORYPROJECT_API FUItem
+struct INVENTORYPROJECT_API FItem
 {
 	GENERATED_BODY()
 	
@@ -20,9 +20,13 @@ struct INVENTORYPROJECT_API FUItem
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
 	FString Name;
 
-	FUItem()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
+	float Weight;
+
+	FItem()
 	{
 		Name = "";
 	}
+	
 
 };

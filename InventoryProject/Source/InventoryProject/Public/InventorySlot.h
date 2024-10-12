@@ -19,10 +19,10 @@ struct INVENTORYPROJECT_API FInventorySlot
 	 * Item held in this slot
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory slot details")
-	FUItem Item;
+	FItem Item;
 	
 	FInventorySlot()
 	{
-		Item = FUItem();
+		Item = FItem();
 	}
 };

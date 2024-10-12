@@ -46,7 +46,7 @@ bool UInventoryComponent::HasItem(FString Name)
 	return false;
 }
 
-bool UInventoryComponent::AddItem(FUItem Item, int Amount)
+bool UInventoryComponent::AddItem(FItem Item, int Amount)
 {
 	FInventorySlot slot = FInventorySlot();
 	slot.Item = Item;

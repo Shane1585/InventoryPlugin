@@ -33,6 +33,16 @@ public:
 	UPROPERTY(BlueprintType, EditAnywhere, Category="Inventory")
 	TArray<FInventorySlot> Slots;
 
+	/**
+	 * Amount of weight that can be carried in the inventory
+	 *
+	 * Can trigger encumbrance if inventory is overweight when a new item is picked up
+	 *
+	 * Carry weight is disabled with a value of -1 in this variable.
+	 */
+	UPROPERTY(BlueprintType, EditAnywhere, BlueprintReadWrite, Category="Item Detail")
+	float CarryWeight;
+
 	/** 
 	 * @param Name Name or the item to check in the array
 	 * @return True if name of item is found
@@ -48,7 +58,7 @@ public:
 	 * @return True if successfully added
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
-	bool AddItem(FUItem Item, int Amount);
+	bool AddItem(FItem Item, int Amount);
 	
 	/**
 	 * Removes the amount of the item from a slot if it exists. If there are none left, it will destroy the slot
@@ -64,4 +74,14 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	TArray<UInventorySlotUIWrapper*> GetInventorySlots();
+
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	float GetCarryWeightLimit();
+
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	float GetCurrentWeight();
+
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	float GetRemainingWeight();
+	
 };
