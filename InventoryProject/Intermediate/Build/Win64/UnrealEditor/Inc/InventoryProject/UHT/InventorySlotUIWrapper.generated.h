@@ -16,6 +16,7 @@ struct FInventorySlot;
 #define INVENTORYPROJECT_InventorySlotUIWrapper_generated_h
 
 #define FID_Unreal_InventoryPlugin_InventoryProject_Source_InventoryProject_Public_InventorySlotUIWrapper_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execGetWeight); \
 	DECLARE_FUNCTION(execGetName); \
 	DECLARE_FUNCTION(execInit);
 

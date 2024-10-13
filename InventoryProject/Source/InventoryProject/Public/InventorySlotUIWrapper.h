@@ -25,4 +25,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
 	FString GetName();
+
+	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
+	FString GetWeight();
 };

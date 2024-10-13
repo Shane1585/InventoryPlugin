@@ -3,6 +3,7 @@
 
 #include "InventorySlotUIWrapper.h"
 
+
 void UInventorySlotUIWrapper::Init(FInventorySlot SlotData)
 {
 	Slot = SlotData;
@@ -11,4 +12,9 @@ void UInventorySlotUIWrapper::Init(FInventorySlot SlotData)
 FString UInventorySlotUIWrapper::GetName()
 {
 	return Slot.Item.Name;
+}
+
+FString UInventorySlotUIWrapper::GetWeight()
+{
+	return FString::SanitizeFloat(Slot.Item.Weight);;
 }
