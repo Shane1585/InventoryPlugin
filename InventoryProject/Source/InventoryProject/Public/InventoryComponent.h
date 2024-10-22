@@ -33,6 +33,7 @@ public:
 	UPROPERTY(BlueprintType, EditAnywhere, Category="Inventory")
 	TArray<FInventorySlot> Slots;
 
+	
 	/**
 	 * Amount of weight that can be carried in the inventory
 	 *
@@ -73,7 +74,7 @@ public:
 	 * @return A list of slots within this inventory
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
-	TArray<UInventorySlotUIWrapper*> GetInventorySlots();
+	TArray<UInventorySlotUIWrapper*> GetInventorySlots(FString FieldName = "");
 
 	/**
 	 * @return true if weight limit is enabled.
@@ -98,6 +99,7 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	float GetRemainingWeight();
-	
+
+	TArray<FInventorySlot> GetOrderBy(FString FieldName);
 	
 };

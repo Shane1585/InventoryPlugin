@@ -1,0 +1,24 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "f:\\unreal\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\private\\sortingfunctions.cpp",
+        "ProvidedModule": "",
+        "PCH": "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\inventoryprojecteditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\inventoryproject\\definitions.inventoryproject.h",
+            "f:\\unreal\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\public\\sortingfunctions.h",
+            "f:\\unreal\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\public\\inventoryslot.h",
+            "f:\\unreal\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\public\\item.h",
+            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\coreuobject\\public\\uobject\\noexporttypes.h",
+            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\coreuobject\\public\\uobject\\propertyaccessutil.h",
+            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\coreuobject\\public\\serialization\\testundeclaredscriptstructobjectreferences.h",
+            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\core\\public\\math\\unitconversion.h",
+            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\core\\public\\math\\unitconversion.inl",
+            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\core\\public\\internationalization\\polyglottextdata.h",
+            "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\unrealeditor\\inc\\inventoryproject\\uht\\item.generated.h",
+            "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\unrealeditor\\inc\\inventoryproject\\uht\\inventoryslot.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

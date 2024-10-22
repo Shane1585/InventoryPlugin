@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\InventoryProject.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\InventoryProject.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\InventoryProjectEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.ignore" />
+    <None Include="..\..\.vsconfig" />
+    <None Include="..\..\InventoryProject.code-workspace" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\InventoryProject">
+      <UniqueIdentifier>{6B0466FE-0C03-3C97-B404-1E89E2840F49}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\InventoryProject\InventoryProject.Build.cs">
+      <Filter>Source\InventoryProject</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\InventoryProject\InventoryProject.cpp">
+      <Filter>Source\InventoryProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\InventoryProject\InventoryProject.h">
+      <Filter>Source\InventoryProject</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\InventoryProject\InventoryProjectCharacter.cpp">
+      <Filter>Source\InventoryProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\InventoryProject\InventoryProjectCharacter.h">
+      <Filter>Source\InventoryProject</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\InventoryProject\InventoryProjectGameMode.cpp">
+      <Filter>Source\InventoryProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\InventoryProject\InventoryProjectGameMode.h">
+      <Filter>Source\InventoryProject</Filter>
+    </ClInclude>
+    <Filter Include="Source\InventoryProject\Private">
+      <UniqueIdentifier>{AA9CB8CD-44D6-3412-86E1-05944A55DB83}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\InventoryProject\Private\InventoryComponent.cpp">
+      <Filter>Source\InventoryProject\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\InventoryProject\Private\InventorySlot.cpp">
+      <Filter>Source\InventoryProject\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\InventoryProject\Private\InventorySlotUIWrapper.cpp">
+      <Filter>Source\InventoryProject\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\InventoryProject\Private\Item.cpp">
+      <Filter>Source\InventoryProject\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\InventoryProject\Private\SortingFunctions.cpp">
+      <Filter>Source\InventoryProject\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\InventoryProject\Public">
+      <UniqueIdentifier>{D4BDE094-019B-365D-8B17-7A295432AB48}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\InventoryProject\Public\InventoryComponent.h">
+      <Filter>Source\InventoryProject\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\InventoryProject\Public\InventorySlot.h">
+      <Filter>Source\InventoryProject\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\InventoryProject\Public\InventorySlotUIWrapper.h">
+      <Filter>Source\InventoryProject\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\InventoryProject\Public\Item.h">
+      <Filter>Source\InventoryProject\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\InventoryProject\Public\SortingFunctions.h">
+      <Filter>Source\InventoryProject\Public</Filter>
+    </ClInclude>
+    <Filter Include="Plugins">
+      <UniqueIdentifier>{BB38096A-B391-30DC-A0D4-4F3EA6B44507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\InventorySystem">
+      <UniqueIdentifier>{A2BF5006-84DF-3030-81ED-6D107A4F4A5D}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\InventorySystem\InventorySystem.uplugin">
+      <Filter>Plugins\InventorySystem</Filter>
+    </None>
+    <Filter Include="Plugins\InventorySystem\Resources">
+      <UniqueIdentifier>{55900607-071E-334B-8D10-982EBFFD765A}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\InventorySystem\Resources\Icon128.png">
+      <Filter>Plugins\InventorySystem\Resources</Filter>
+    </None>
+  </ItemGroup>
+</Project>

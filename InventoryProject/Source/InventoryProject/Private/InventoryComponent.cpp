@@ -3,6 +3,8 @@
 
 #include "InventoryComponent.h"
 
+#include "SortingFunctions.h"
+
 // Sets default values for this component's properties
 UInventoryComponent::UInventoryComponent()
 {
@@ -69,14 +71,16 @@ bool UInventoryComponent::RemoveItem(FString Name, int Amount)
 	return false;
 }
 
-TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots()
+TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots(FString FieldName = "")
 {
 	TArray<UInventorySlotUIWrapper*> InventorySlots;
 	
-	for(int i = 0; i < Slots.Num(); i++)
+	TArray<FInventorySlot> SortedSlots = GetOrderBy("name");
+	
+	for(int i = 0; i < SortedSlots.Num(); i++)
 	{
 		UInventorySlotUIWrapper* Wrapper = NewObject<UInventorySlotUIWrapper>();
-		Wrapper->Init(Slots[i]);
+		Wrapper->Init(SortedSlots[i]);
 		InventorySlots.Add(Wrapper);
 	}
 
@@ -118,6 +122,14 @@ float UInventoryComponent::GetRemainingWeight()
 	}
 	
 	return 0;
+}
+
+TArray<FInventorySlot> UInventoryComponent::GetOrderBy(FString FieldName)
+{
+	
+	TArray<FInventorySlot> SortedSlots = Slots;
+	SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNames);
+	return SortedSlots;
 }
 
 
