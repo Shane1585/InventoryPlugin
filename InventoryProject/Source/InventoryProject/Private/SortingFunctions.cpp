@@ -15,3 +15,9 @@ bool SortingFunctions::CompareFInventorySlotNames(const FInventorySlot& a, const
 {
 	return (a.Item.Name.ToLower().Compare(b.Item.Name.ToLower()) <= 0);
 }
+
+bool SortingFunctions::CompareFInventorySlotWeights(const FInventorySlot& a, const FInventorySlot& b)
+{
+	return a.Item.Weight >= b.Item.Weight;
+	
+}

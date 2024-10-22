@@ -74,7 +74,7 @@ public:
 	 * @return A list of slots within this inventory
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
-	TArray<UInventorySlotUIWrapper*> GetInventorySlots(FString FieldName = "");
+	TArray<UInventorySlotUIWrapper*> GetInventorySlots(FString FieldName);
 
 	/**
 	 * @return true if weight limit is enabled.

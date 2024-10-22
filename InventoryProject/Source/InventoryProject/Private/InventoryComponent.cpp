@@ -71,11 +71,11 @@ bool UInventoryComponent::RemoveItem(FString Name, int Amount)
 	return false;
 }
 
-TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots(FString FieldName = "")
+TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots(FString FieldName)
 {
 	TArray<UInventorySlotUIWrapper*> InventorySlots;
 	
-	TArray<FInventorySlot> SortedSlots = GetOrderBy("name");
+	TArray<FInventorySlot> SortedSlots = GetOrderBy(FieldName);
 	
 	for(int i = 0; i < SortedSlots.Num(); i++)
 	{
@@ -126,9 +126,27 @@ float UInventoryComponent::GetRemainingWeight()
 
 TArray<FInventorySlot> UInventoryComponent::GetOrderBy(FString FieldName)
 {
-	
 	TArray<FInventorySlot> SortedSlots = Slots;
-	SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNames);
+	if(FieldName == "name")
+	{
+		
+		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNames);
+		
+	}
+	else if(FieldName == "weight")
+	{
+		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotWeights);
+	}
+	else if(FieldName == "-name")
+	{
+		
+		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNames);
+		
+	}
+	else if(FieldName == "-weight")
+	{
+		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotWeights);
+	}
 	return SortedSlots;
 }
 
