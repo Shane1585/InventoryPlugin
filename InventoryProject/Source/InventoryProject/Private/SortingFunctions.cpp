@@ -21,3 +21,9 @@ bool SortingFunctions::CompareFInventorySlotWeights(const FInventorySlot& a, con
 	return a.Item.Weight >= b.Item.Weight;
 	
 }
+
+bool SortingFunctions::CompareFInventorySlotWeightsDesc(const FInventorySlot& a, const FInventorySlot& b)
+{
+	return a.Item.Weight < b.Item.Weight;
+	
+}

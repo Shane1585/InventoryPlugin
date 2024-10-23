@@ -145,7 +145,7 @@ TArray<FInventorySlot> UInventoryComponent::GetOrderBy(FString FieldName)
 	}
 	else if(FieldName == "-weight")
 	{
-		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotWeights);
+		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotWeightsDesc);
 	}
 	return SortedSlots;
 }
