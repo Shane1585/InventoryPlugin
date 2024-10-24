@@ -11,12 +11,17 @@ SortingFunctions::~SortingFunctions()
 {
 }
 
-bool SortingFunctions::CompareFInventorySlotNames(const FInventorySlot& a, const FInventorySlot& b)
+bool SortingFunctions::CompareFInventorySlotNamesAsc(const FInventorySlot& a, const FInventorySlot& b)
 {
 	return (a.Item.Name.ToLower().Compare(b.Item.Name.ToLower()) <= 0);
 }
 
-bool SortingFunctions::CompareFInventorySlotWeights(const FInventorySlot& a, const FInventorySlot& b)
+bool SortingFunctions::CompareFInventorySlotNamesDesc(const FInventorySlot& a, const FInventorySlot& b)
+{
+	return (a.Item.Name.ToLower().Compare(b.Item.Name.ToLower()) > 0);
+}
+
+bool SortingFunctions::CompareFInventorySlotWeightsAsc(const FInventorySlot& a, const FInventorySlot& b)
 {
 	return a.Item.Weight >= b.Item.Weight;
 	

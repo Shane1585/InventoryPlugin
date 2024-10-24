@@ -14,9 +14,11 @@ public:
 	SortingFunctions();
 	~SortingFunctions();
 
-	static bool CompareFInventorySlotNames(const FInventorySlot& a, const FInventorySlot& b);
+	static bool CompareFInventorySlotNamesAsc(const FInventorySlot& a, const FInventorySlot& b);
 
-	static bool CompareFInventorySlotWeights(const FInventorySlot& a, const FInventorySlot& b);
+	static bool CompareFInventorySlotNamesDesc(const FInventorySlot& a, const FInventorySlot& b);
+
+	static bool CompareFInventorySlotWeightsAsc(const FInventorySlot& a, const FInventorySlot& b);
 
 	static bool CompareFInventorySlotWeightsDesc(const FInventorySlot& a, const FInventorySlot& b);
 

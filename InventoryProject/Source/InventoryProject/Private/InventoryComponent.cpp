@@ -130,17 +130,17 @@ TArray<FInventorySlot> UInventoryComponent::GetOrderBy(FString FieldName)
 	if(FieldName == "name")
 	{
 		
-		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNames);
+		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNamesAsc);
 		
 	}
 	else if(FieldName == "weight")
 	{
-		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotWeights);
+		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotWeightsAsc);
 	}
 	else if(FieldName == "-name")
 	{
 		
-		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNames);
+		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNamesDesc);
 		
 	}
 	else if(FieldName == "-weight")
