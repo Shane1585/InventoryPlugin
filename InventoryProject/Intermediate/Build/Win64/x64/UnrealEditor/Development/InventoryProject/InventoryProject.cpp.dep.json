@@ -1,12 +1,12 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "f:\\unreal\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\inventoryproject.cpp",
+        "Source": "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\inventoryproject.cpp",
         "ProvidedModule": "",
-        "PCH": "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\inventoryprojecteditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "PCH": "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\inventoryprojecteditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
         "Includes": [
-            "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\inventoryproject\\definitions.inventoryproject.h",
-            "f:\\unreal\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\inventoryproject.h"
+            "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\inventoryproject\\definitions.inventoryproject.h",
+            "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\inventoryproject.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
