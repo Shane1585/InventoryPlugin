@@ -1,23 +1,23 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "f:\\unreal\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\private\\inventoryslotuiwrapper.cpp",
+        "Source": "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\private\\inventoryslotuiwrapper.cpp",
         "ProvidedModule": "",
-        "PCH": "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\inventoryprojecteditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "PCH": "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\inventoryprojecteditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
         "Includes": [
-            "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\inventoryproject\\definitions.inventoryproject.h",
-            "f:\\unreal\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\public\\inventoryslotuiwrapper.h",
-            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\coreuobject\\public\\uobject\\noexporttypes.h",
-            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\coreuobject\\public\\uobject\\propertyaccessutil.h",
-            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\coreuobject\\public\\serialization\\testundeclaredscriptstructobjectreferences.h",
-            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\core\\public\\math\\unitconversion.h",
-            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\core\\public\\math\\unitconversion.inl",
-            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\core\\public\\internationalization\\polyglottextdata.h",
-            "f:\\unreal\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\public\\inventoryslot.h",
-            "f:\\unreal\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\public\\item.h",
-            "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\unrealeditor\\inc\\inventoryproject\\uht\\item.generated.h",
-            "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\unrealeditor\\inc\\inventoryproject\\uht\\inventoryslot.generated.h",
-            "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\unrealeditor\\inc\\inventoryproject\\uht\\inventoryslotuiwrapper.generated.h"
+            "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\inventoryproject\\definitions.inventoryproject.h",
+            "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\public\\inventoryslotuiwrapper.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\coreuobject\\public\\uobject\\noexporttypes.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\coreuobject\\public\\uobject\\propertyaccessutil.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\coreuobject\\public\\serialization\\testundeclaredscriptstructobjectreferences.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\core\\public\\math\\unitconversion.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\core\\public\\math\\unitconversion.inl",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\core\\public\\internationalization\\polyglottextdata.h",
+            "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\public\\inventoryslot.h",
+            "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\public\\item.h",
+            "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\unrealeditor\\inc\\inventoryproject\\uht\\item.generated.h",
+            "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\unrealeditor\\inc\\inventoryproject\\uht\\inventoryslot.generated.h",
+            "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\unrealeditor\\inc\\inventoryproject\\uht\\inventoryslotuiwrapper.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
