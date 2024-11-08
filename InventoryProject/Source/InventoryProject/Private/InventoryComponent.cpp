@@ -55,7 +55,13 @@ bool UInventoryComponent::AddItem(FItem Item, int Amount)
 	Slots.Add(slot);
 	return true;
 }
-
+//---------------------------------------------------------------------------------------------
+TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots(int GetAmount)
+{
+	TArray<UInventorySlotUIWrapper*> InventorySlots;
+	for(int i = 0; i < Amount.Num(1); i++)
+}
+//-------------------------------------------------------------------------------
 bool UInventoryComponent::RemoveItem(FString Name, int Amount)
 {
 	for(int i = 0; i < Slots.Num(); i++)

@@ -1,17 +1,17 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\unrealeditor\\inc\\inventoryproject\\uht\\inventoryprojectgamemode.gen.cpp",
+        "Source": "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\unrealeditor\\inc\\inventoryproject\\uht\\inventoryprojectgamemode.gen.cpp",
         "ProvidedModule": "",
-        "PCH": "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\inventoryprojecteditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "PCH": "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\inventoryprojecteditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
         "Includes": [
-            "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\inventoryproject\\definitions.inventoryproject.h",
-            "f:\\unreal\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\inventoryprojectgamemode.h",
-            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
-            "f:\\engines\\unreal\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
-            "f:\\engines\\unreal\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
-            "f:\\engines\\unreal\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
-            "f:\\unreal\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\unrealeditor\\inc\\inventoryproject\\uht\\inventoryprojectgamemode.generated.h"
+            "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\inventoryproject\\definitions.inventoryproject.h",
+            "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\source\\inventoryproject\\inventoryprojectgamemode.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "c:\\users\\d3524091\\documents\\github\\inventoryplugin\\inventoryproject\\intermediate\\build\\win64\\unrealeditor\\inc\\inventoryproject\\uht\\inventoryprojectgamemode.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

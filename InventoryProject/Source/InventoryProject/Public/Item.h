@@ -22,7 +22,10 @@ struct INVENTORYPROJECT_API FItem
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
 	float Weight;
-
+//------------------------------------------------------------------------------
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Item Detail")
+	int Amount;
+//------------------------------------------------------------------------------
 	FItem()
 	{
 		Name = "";

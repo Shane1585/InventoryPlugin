@@ -16,5 +16,11 @@ FString UInventorySlotUIWrapper::GetName()
 
 FString UInventorySlotUIWrapper::GetWeight()
 {
-	return FString::SanitizeFloat(Slot.Item.Weight);;
+	return FString::SanitizeFloat(Slot.Item.Weight);
 }
+//----------------------------------------------------------------
+	FString UInventorySlotUIWrapper::GetAmount()
+{
+	return FString::SanitizeFloat(Slot.Item.Weight);
+}
+

@@ -101,5 +101,7 @@ public:
 	float GetRemainingWeight();
 
 	TArray<FInventorySlot> GetOrderBy(FString FieldName);
-	
+//---------------------------------------------------------------------
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	int GetAmount();
 };
