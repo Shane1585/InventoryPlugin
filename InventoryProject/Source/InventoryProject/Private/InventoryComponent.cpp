@@ -50,26 +50,44 @@ bool UInventoryComponent::HasItem(FString Name)
 
 bool UInventoryComponent::AddItem(FItem Item, int Amount)
 {
-	FInventorySlot slot = FInventorySlot();
-	slot.Item = Item;
-	Slots.Add(slot);
-	return true;
-}
-//---------------------------------------------------------------------------------------------
-TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots(int GetAmount)
-{
-	TArray<UInventorySlotUIWrapper*> InventorySlots;
-	for(int i = 0; i < Amount.Num(1); i++)
-}
-//-------------------------------------------------------------------------------
-bool UInventoryComponent::RemoveItem(FString Name, int Amount)
-{
+	//searches for a slot with a matching item, then adds amount to the slot
 	for(int i = 0; i < Slots.Num(); i++)
 	{
 		FInventorySlot ThisSlot = Slots[i];
+		if(ThisSlot.Item == Item)
+		{
+			Slots[i].Amount = Slots[i].Amount + Amount;
+			return true;
+		}
+	}
+
+	//if not found (not added), add a new slot
+	FInventorySlot slot = FInventorySlot();
+	slot.Item = Item;
+	slot.Amount = Amount;
+	Slots.Add(slot);
+	return true;
+}
+
+bool UInventoryComponent::RemoveItem(FString Name, int Amount)
+{
+	//Loops through all slots
+	for(int i = 0; i < Slots.Num(); i++)
+	{
+		// Checks if we have found the item with matching name
+		FInventorySlot ThisSlot = Slots[i];
 		if(ThisSlot.Item.Name == Name)
 		{
-			Slots.RemoveAt(i);
+			//Gets amount of item and removes it from the slot, or deletes slot if there are too many to remove
+			if(ThisSlot.Amount <= Amount) // if you have too many to remove
+			{
+				Slots.RemoveAt(i); // remove slot
+			}
+			else
+			{
+				Slots[i].Amount = Slots[i].Amount - Amount; // remove an amount
+			}
+			
 			return true;
 		}
 	}
@@ -114,7 +132,7 @@ float UInventoryComponent::GetCurrentWeight()
 	
 	for(int i = 0; i < Slots.Num(); i++)
 	{
-		TotalWeight += Slots[i].Item.Weight;
+		TotalWeight += Slots[i].Item.Weight * Slots[i].Amount;
 	}
 	
 	return TotalWeight;
@@ -133,26 +151,32 @@ float UInventoryComponent::GetRemainingWeight()
 TArray<FInventorySlot> UInventoryComponent::GetOrderBy(FString FieldName)
 {
 	TArray<FInventorySlot> SortedSlots = Slots;
-	if(FieldName == "name")
+
+	if(FieldName.ToLower() == "name")
 	{
-		
 		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNamesAsc);
-		
 	}
-	else if(FieldName == "weight")
+	else if (FieldName.ToLower() == "-name")
+	{
+		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNamesDesc);
+	}
+	else if (FieldName.ToLower() == "amount")
+	{
+		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotAmountsAsc);
+	}
+	else if (FieldName.ToLower() == "-amount")
+	{
+		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotAmountsDesc);
+	}
+	else if (FieldName.ToLower() == "weight")
 	{
 		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotWeightsAsc);
 	}
-	else if(FieldName == "-name")
-	{
-		
-		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNamesDesc);
-		
-	}
-	else if(FieldName == "-weight")
+	else if (FieldName.ToLower() == "-weight")
 	{
 		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotWeightsDesc);
 	}
+	
 	return SortedSlots;
 }
 

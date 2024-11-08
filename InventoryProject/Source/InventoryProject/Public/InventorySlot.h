@@ -20,9 +20,13 @@ struct INVENTORYPROJECT_API FInventorySlot
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory slot details")
 	FItem Item;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
+	int Amount;
 	
 	FInventorySlot()
 	{
 		Item = FItem();
+		Amount = 1;
 	}
 };

@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\Users\\D3524091\\Documents\\GitHub\\InventoryPlugin\\InventoryProject\\Source\\InventoryProject\\InventoryProject.Build.cs",
-		"C:\\Users\\D3524091\\Documents\\GitHub\\InventoryPlugin\\InventoryProject\\Source\\InventoryProject.Target.cs",
-		"C:\\Users\\D3524091\\Documents\\GitHub\\InventoryPlugin\\InventoryProject\\Source\\InventoryProjectEditor.Target.cs"
+		"F:\\Unreal\\InventoryPlugin\\InventoryProject\\Source\\InventoryProject\\InventoryProject.Build.cs",
+		"F:\\Unreal\\InventoryPlugin\\InventoryProject\\Source\\InventoryProject.Target.cs",
+		"F:\\Unreal\\InventoryPlugin\\InventoryProject\\Source\\InventoryProjectEditor.Target.cs"
 	],
 	"EngineVersion": "5.4.4"
 }

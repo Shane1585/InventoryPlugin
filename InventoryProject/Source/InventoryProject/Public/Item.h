@@ -22,14 +22,19 @@ struct INVENTORYPROJECT_API FItem
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
 	float Weight;
-//------------------------------------------------------------------------------
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Item Detail")
-	int Amount;
-//------------------------------------------------------------------------------
+
 	FItem()
 	{
 		Name = "";
+		Weight = 0;
 	}
+
+	/**
+	 * This decides what == does when comparing two FItems
+	 * @param Other The other item to check
+	 * @return True, if the two match.
+	 */
+	bool operator == (FItem Other);
 	
 
 };

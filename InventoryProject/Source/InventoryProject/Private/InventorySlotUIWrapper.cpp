@@ -3,6 +3,8 @@
 
 #include "InventorySlotUIWrapper.h"
 
+#include "IDetailTreeNode.h"
+
 
 void UInventorySlotUIWrapper::Init(FInventorySlot SlotData)
 {
@@ -14,13 +16,18 @@ FString UInventorySlotUIWrapper::GetName()
 	return Slot.Item.Name;
 }
 
-FString UInventorySlotUIWrapper::GetWeight()
+FString UInventorySlotUIWrapper::GetSingleItemWeight()
 {
 	return FString::SanitizeFloat(Slot.Item.Weight);
 }
-//----------------------------------------------------------------
-	FString UInventorySlotUIWrapper::GetAmount()
+
+FString UInventorySlotUIWrapper::GetTotalSlotWeight()
 {
-	return FString::SanitizeFloat(Slot.Item.Weight);
+	return FString::SanitizeFloat(Slot.Item.Weight * Slot.Amount);
+}
+
+FString UInventorySlotUIWrapper::GetAmount()
+{
+	return FString::FromInt(Slot.Amount);
 }
 

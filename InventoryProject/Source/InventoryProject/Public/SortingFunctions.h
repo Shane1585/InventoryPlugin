@@ -22,5 +22,8 @@ public:
 
 	static bool CompareFInventorySlotWeightsDesc(const FInventorySlot& a, const FInventorySlot& b);
 
-	
+	static bool CompareFInventorySlotAmountsAsc(const FInventorySlot& a, const FInventorySlot& b);
+
+	static bool CompareFInventorySlotAmountsDesc(const FInventorySlot& a, const FInventorySlot& b);
+
 };
