@@ -14,16 +14,20 @@ struct INVENTORYSYSTEM_API FItem
 	GENERATED_BODY()
 	
 	/**
-	 * Display name for item
+	 * Name for the item
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
 	FString Name;
 
+	/**
+	 * Weight for a single one of this item
+	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
 	float Weight;
 
 	FItem()
 	{
+		// Set some sensible initial values in the constructor
 		Name = "";
 		Weight = 0;
 	}

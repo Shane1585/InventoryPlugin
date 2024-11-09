@@ -9,8 +9,15 @@
 #include "InventoryComponent.generated.h"
 
 
+/**
+ * This class is the inventory itself. Adding this component will add an inventory to the actor added to (e.g.
+ * the player, a chest, etc.)
+ *
+ * This has a number of slots, to which items can be added, along with an optional weight limit.
+ */
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class INVENTORYSYSTEM_API UInventoryComponent : public UActorComponent
+
 {
 	GENERATED_BODY()
 
@@ -28,23 +35,25 @@ public:
 
 
 	/**
-	 * List of slots containing items and other slot data (such as amount of an item) in this inventory
+	 * List of slots containing items and other slot data (such as amount of an item) in this inventory.
 	 */
 	UPROPERTY(BlueprintType, EditAnywhere, Category="Inventory")
 	TArray<FInventorySlot> Slots;
 
 	
 	/**
-	 * Amount of weight that can be carried in the inventory
+	 * Amount of weight that can be carried in the inventory.
 	 *
-	 * Can trigger encumbrance if inventory is overweight when a new item is picked up
+	 * Can trigger encumbrance if inventory is overweight when a new item is picked up.
 	 *
 	 * Carry weight is disabled with a value of 0 or less in this variable.
 	 */
 	UPROPERTY(BlueprintType, EditAnywhere, BlueprintReadWrite, Category="Item Detail")
 	float CarryWeightLimit = 0;
 
-	/** 
+	/**
+	 * Whether or not this inventory has an item with a matching name.
+	 * 
 	 * @param Name Name or the item to check in the array
 	 * @return True if name of item is found
 	 */
@@ -62,7 +71,8 @@ public:
 	bool AddItem(FItem Item, int Amount);
 	
 	/**
-	 * Removes the amount of the item from a slot if it exists. If there are none left, it will destroy the slot
+	 * Removes the amount of the item from a slot if it exists. If there are none left, it will destroy the slot.
+	 * 
 	 * @param Name The name of the item to remove
 	 * @param Amount The amount of the item to remove
 	 * @return True if it was successfully removed
@@ -71,7 +81,7 @@ public:
 	bool RemoveItem(FString Name, int Amount);
 
 	/** 
-	 * @return A list of slots within this inventory
+	 * @return A list of slots within this inventory.
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	TArray<UInventorySlotUIWrapper*> GetInventorySlots(FString FieldName);
@@ -100,6 +110,17 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	float GetRemainingWeight();
 
+	/**
+	 * This gets the inventory slots held in this inventory, and sorts them by the passed in FString
+	 * weight - order by the weight (asc)
+	 * name - order alphabetically by the name (acs)
+	 * amount - order by the amount (acs)
+	 *
+	 * Add '-' to the start of the field name to reverse the ordering.
+	 * 
+	 * @param FieldName The field to order the returned array by.
+	 * @return An ordered list of inventory slots
+	 */
 	TArray<FInventorySlot> GetOrderBy(FString FieldName);
 
 

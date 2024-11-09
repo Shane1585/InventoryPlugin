@@ -36,8 +36,10 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 bool UInventoryComponent::HasItem(FString Name)
 {
+	// for every slot
 	for(int i = 0; i < Slots.Num(); i++)
 	{
+		// if any slot has a matching name, exit and return true.
 		FInventorySlot ThisSlot = Slots[i];
 		if(ThisSlot.Item.Name==Name)
 		{
@@ -50,14 +52,15 @@ bool UInventoryComponent::HasItem(FString Name)
 
 bool UInventoryComponent::AddItem(FItem Item, int Amount)
 {
-	//searches for a slot with a matching item, then adds amount to the slot
+	// for each slot
 	for(int i = 0; i < Slots.Num(); i++)
 	{
+		// searches for a slot with a matching item, then adds amount to the slot
 		FInventorySlot ThisSlot = Slots[i];
 		if(ThisSlot.Item == Item)
 		{
 			Slots[i].Amount = Slots[i].Amount + Amount;
-			return true;
+			return true; // returns true and exists after the amount has been added to one slot
 		}
 	}
 
@@ -97,12 +100,14 @@ bool UInventoryComponent::RemoveItem(FString Name, int Amount)
 
 TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots(FString FieldName)
 {
+	// Creates variable to store UI inventory slots, then gets inventory slots ordered by the field name
 	TArray<UInventorySlotUIWrapper*> InventorySlots;
-	
 	TArray<FInventorySlot> SortedSlots = GetOrderBy(FieldName);
-	
+
+	// for each sorted slot
 	for(int i = 0; i < SortedSlots.Num(); i++)
 	{
+		// Wraps inventory slot, adds it to the list of wrapped slots.
 		UInventorySlotUIWrapper* Wrapper = NewObject<UInventorySlotUIWrapper>();
 		Wrapper->Init(SortedSlots[i]);
 		InventorySlots.Add(Wrapper);
@@ -113,6 +118,7 @@ TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots(FString 
 
 bool UInventoryComponent::HasAWeightLimit()
 {
+	// weight limit enabled if more than 0.
 	return (CarryWeightLimit > 0);
 }
 
@@ -129,9 +135,11 @@ float UInventoryComponent::GetCarryWeightLimit()
 float UInventoryComponent::GetCurrentWeight()
 {
 	float TotalWeight = 0;
-	
+
+	// for each slot
 	for(int i = 0; i < Slots.Num(); i++)
 	{
+		// add to the total weight the weight of an item, multiplied by the amount
 		TotalWeight += Slots[i].Item.Weight * Slots[i].Amount;
 	}
 	
@@ -152,6 +160,8 @@ TArray<FInventorySlot> UInventoryComponent::GetOrderBy(FString FieldName)
 {
 	TArray<FInventorySlot> SortedSlots = Slots;
 
+	// Use correct sorting function by the name of the field passed in
+	// Tried to make this a switch case but didn't work.
 	if(FieldName.ToLower() == "name")
 	{
 		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNamesAsc);

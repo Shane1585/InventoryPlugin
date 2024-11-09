@@ -18,11 +18,13 @@ FString UInventorySlotUIWrapper::GetName()
 
 FString UInventorySlotUIWrapper::GetSingleItemWeight()
 {
+	// get rid of extra 0's from the weight
 	return FString::SanitizeFloat(Slot.Item.Weight);
 }
 
 FString UInventorySlotUIWrapper::GetTotalSlotWeight()
 {
+	// get rid of extra 0's from the total weight
 	return FString::SanitizeFloat(Slot.Item.Weight * Slot.Amount);
 }
 

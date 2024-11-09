@@ -21,11 +21,15 @@ struct INVENTORYSYSTEM_API FInventorySlot
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory slot details")
 	FItem Item;
 
+	/**
+	 * The amount of the item held in this slot.
+	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
 	int Amount;
 	
 	FInventorySlot()
 	{
+		// Set some sensible defaults in the constructor to prevent errors
 		Item = FItem();
 		Amount = 1;
 	}

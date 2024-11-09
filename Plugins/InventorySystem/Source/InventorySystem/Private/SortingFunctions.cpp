@@ -13,11 +13,13 @@ SortingFunctions::~SortingFunctions()
 
 bool SortingFunctions::CompareFInventorySlotNamesAsc(const FInventorySlot& a, const FInventorySlot& b)
 {
+	// Ignore capital letters or it doesn't sort properly.
 	return (a.Item.Name.ToLower().Compare(b.Item.Name.ToLower()) <= 0);
 }
 
 bool SortingFunctions::CompareFInventorySlotNamesDesc(const FInventorySlot& a, const FInventorySlot& b)
 {
+	// Ignore capital letters or it doesn't sort properly.
 	return (a.Item.Name.ToLower().Compare(b.Item.Name.ToLower()) > 0);
 }
 
