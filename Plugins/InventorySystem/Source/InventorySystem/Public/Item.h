@@ -25,6 +25,12 @@ struct INVENTORYSYSTEM_API FItem
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
 	float Weight;
 
+	/**
+	 * A 2D Texture used for the inventory icon. Defaults if not set to prevent crashes.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
+	UTexture2D* InventoryIcon = UTexture2D::CreateTransient(64,64);
+
 	FItem()
 	{
 		// Set some sensible initial values in the constructor

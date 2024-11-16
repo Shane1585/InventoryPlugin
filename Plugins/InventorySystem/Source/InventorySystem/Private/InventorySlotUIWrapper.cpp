@@ -33,3 +33,15 @@ FString UInventorySlotUIWrapper::GetAmount()
 	return FString::FromInt(Slot.Amount);
 }
 
+FSlateBrush UInventorySlotUIWrapper::GetInventoryIconBrush()
+{
+	// Sets brush up with an image size and icon
+	// SlateBrushes are used in UI for images.
+	FSlateBrush Brush;
+	Brush.SetResourceObject(Slot.Item.InventoryIcon);
+	Brush.ImageSize = FVector2D(64, 64);
+	return Brush;
+}
+
+
+

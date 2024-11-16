@@ -54,4 +54,11 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
 	FString GetAmount();
+
+	/**
+	 * @return A slate brush containing an inventory icon texture
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
+	FSlateBrush GetInventoryIconBrush();
+
 };
