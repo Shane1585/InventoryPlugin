@@ -43,5 +43,10 @@ FSlateBrush UInventorySlotUIWrapper::GetInventoryIconBrush()
 	return Brush;
 }
 
+bool UInventorySlotUIWrapper::HasInventoryIcon()
+{
+	return IsValid(Slot.Item.InventoryIcon);
+}
+
 
 

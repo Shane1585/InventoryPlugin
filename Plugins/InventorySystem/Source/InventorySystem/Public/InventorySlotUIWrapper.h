@@ -61,4 +61,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
 	FSlateBrush GetInventoryIconBrush();
 
+	/**
+	 * @return True, if there is an icon to show in the slot
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
+	bool HasInventoryIcon();
 };
