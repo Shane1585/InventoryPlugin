@@ -80,6 +80,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	bool RemoveItem(FString Name, int Amount);
 
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	bool DropItem(FString Name, int Amount);
+
 	/** 
 	 * @return A list of slots within this inventory.
 	 */

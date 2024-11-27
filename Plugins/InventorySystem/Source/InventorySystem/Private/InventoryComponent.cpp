@@ -3,6 +3,9 @@
 
 #include "InventoryComponent.h"
 
+#include "GroundItem.h"
+#include "GroundItemDetail.h"
+#include "SGraphPinDataTableRowName.h"
 #include "SortingFunctions.h"
 
 // Sets default values for this component's properties
@@ -20,7 +23,6 @@ UInventoryComponent::UInventoryComponent()
 void UInventoryComponent::BeginPlay()
 {
 	Super::BeginPlay();
-
 	// ...
 	
 }
@@ -95,6 +97,49 @@ bool UInventoryComponent::RemoveItem(FString Name, int Amount)
 		}
 	}
 	
+	return false;
+}
+
+bool UInventoryComponent::DropItem(FString Name, int Amount)
+{
+	FInventorySlot DroppedSlot;
+	bool FoundItem = false;
+	for(int i = 0; i < Slots.Num(); i++)
+	{
+		// Checks if we have found the item with matching name
+		FInventorySlot ThisSlot = Slots[i];
+		if(ThisSlot.Item.Name == Name)
+		{
+			//Gets amount of item and removes it from the slot, or deletes slot if there are too many to remove
+			if(ThisSlot.Amount <= Amount) // if you have too many to remove
+			{
+				Amount = ThisSlot.Amount;
+			}
+			DroppedSlot = ThisSlot;
+			FoundItem = true;
+			break;
+		}
+	}
+
+	if (FoundItem)
+	{
+
+		// Get and search the datatable for the item details
+		FSoftObjectPath DataTablePath = FSoftObjectPath(TEXT("/InventorySystem/DataTables/GroundItemTable.GroundItemTable"));
+		UDataTable* DataTable = Cast<UDataTable>(DataTablePath.ResolveObject());
+		FGroundItemDetail* FoundDetails = DataTable->FindRow<FGroundItemDetail>(*DroppedSlot.Item.Name, "");
+
+		if (FoundDetails != nullptr)
+		{
+			// If it's been found, spawn an item with the details into the world at 0,0,0
+			AGroundItem* ThisItem = GetWorld()->SpawnActor<AGroundItem>();
+			ThisItem->InitialiseItem(FTransform(), AsConst(*FoundDetails), DroppedSlot);
+			RemoveItem(Name, Amount);
+			return true;
+		}
+
+	}
+
 	return false;
 }
 

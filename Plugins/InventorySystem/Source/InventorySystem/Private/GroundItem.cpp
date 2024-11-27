@@ -63,6 +63,8 @@ void AGroundItem::PickupItem(AActor* OverlappedActor, AActor* OtherActor)
 	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Overlapping"));
 	UInventoryComponent* Inventory = Cast<UInventoryComponent>(OtherActor->GetComponentByClass(UInventoryComponent::StaticClass()));
 	Inventory->AddItem(InventoryDetails.Item, InventoryDetails.Amount);
+	Inventory->DropItem("Tree", 1);
+
 	this->Destroy();
 }
 
