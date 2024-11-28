@@ -100,7 +100,7 @@ bool UInventoryComponent::RemoveItem(FString Name, int Amount)
 	return false;
 }
 
-bool UInventoryComponent::DropItem(FString Name, int Amount)
+bool UInventoryComponent::DropItem(FString Name, int Amount, FTransform DropLocation)
 {
 	//Which slot details are being dropped, and if it can be found
 	FInventorySlot DroppedSlot;
@@ -137,7 +137,7 @@ bool UInventoryComponent::DropItem(FString Name, int Amount)
 		{
 			// spawn the item in the world, then remove it from the inventory
 			AGroundItem* ThisItem = GetWorld()->SpawnActor<AGroundItem>();
-			ThisItem->InitialiseItem(FTransform(), AsConst(*FoundDetails), DroppedSlot);
+			ThisItem->InitialiseItem(DropLocation, AsConst(*FoundDetails), DroppedSlot);
 			RemoveItem(Name, Amount);
 			return true; // if removed, return successful
 		}
@@ -157,9 +157,11 @@ TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots(FString 
 	{
 		// Wraps inventory slot, adds it to the list of wrapped slots.
 		UInventorySlotUIWrapper* Wrapper = NewObject<UInventorySlotUIWrapper>();
-		Wrapper->Init(SortedSlots[i]);
+		Wrapper->Init(SortedSlots[i], this);
 		InventorySlots.Add(Wrapper);
 	}
+	
+	
 
 	return InventorySlots;
 }

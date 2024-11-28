@@ -90,7 +90,7 @@ public:
 	 * @return True, if an item has been dropped
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
-	bool DropItem(FString Name, int Amount);
+	bool DropItem(FString Name, int Amount, FTransform DropLocation);
 
 	/** 
 	 * @return A list of slots within this inventory.

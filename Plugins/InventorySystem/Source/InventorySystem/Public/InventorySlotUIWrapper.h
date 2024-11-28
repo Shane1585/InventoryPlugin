@@ -23,13 +23,16 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory slot details")
 	FInventorySlot Slot;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory slot details")
+	UInventoryComponent* RelatedInventory;
+	
 	/**
 	 * Sets this up to have the inventory data to show
 	 * 
 	 * @param SlotData The slots to show in the UI
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
-	void Init(FInventorySlot SlotData);
+	void Init(FInventorySlot SlotData, UInventoryComponent* InventoryComponent);
 
 	/**
 	 * @return The name of the item in this slot

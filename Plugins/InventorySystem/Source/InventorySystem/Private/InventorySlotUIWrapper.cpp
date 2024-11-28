@@ -6,9 +6,10 @@
 #include "IDetailTreeNode.h"
 
 
-void UInventorySlotUIWrapper::Init(FInventorySlot SlotData)
+void UInventorySlotUIWrapper::Init(FInventorySlot SlotData, UInventoryComponent* InventoryComponent)
 {
 	Slot = SlotData;
+	RelatedInventory = InventoryComponent;
 }
 
 FString UInventorySlotUIWrapper::GetName()
