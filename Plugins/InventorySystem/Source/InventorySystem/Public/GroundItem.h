@@ -33,7 +33,10 @@ public:
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item appearence")
 	UBoxComponent* InteractTriggerBox = CreateDefaultSubobject<UBoxComponent>(TEXT("InteractTriggerBox"));
-	
+
+	// UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item appearence", meta=(RowType="GroundItemDetail"))
+	// FDataTableRowHandle ActorDetails;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

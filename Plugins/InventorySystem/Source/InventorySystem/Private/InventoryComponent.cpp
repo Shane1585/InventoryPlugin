@@ -102,45 +102,48 @@ bool UInventoryComponent::RemoveItem(FString Name, int Amount)
 
 bool UInventoryComponent::DropItem(FString Name, int Amount)
 {
+	//Which slot details are being dropped, and if it can be found
 	FInventorySlot DroppedSlot;
 	bool FoundItem = false;
+
+	// Checks the slots for the item by name
 	for(int i = 0; i < Slots.Num(); i++)
 	{
-		// Checks if we have found the item with matching name
 		FInventorySlot ThisSlot = Slots[i];
-		if(ThisSlot.Item.Name == Name)
+		if(ThisSlot.Item.Name == Name) // if found
 		{
-			//Gets amount of item and removes it from the slot, or deletes slot if there are too many to remove
-			if(ThisSlot.Amount <= Amount) // if you have too many to remove
+			//Gets amount of item and removes it from the slot, or deletes slot if there are too few to remove
+			// and changes the amount being dropped if there are too few
+			if(ThisSlot.Amount <= Amount) 
 			{
 				Amount = ThisSlot.Amount;
 			}
 			DroppedSlot = ThisSlot;
 			FoundItem = true;
-			break;
+			break; // don't keep searching
 		}
 	}
 
+	// If it found it
 	if (FoundItem)
 	{
+		// Get the row in FGroundItemDetail datatable to match the name of the item in the inventory slot
+		FDataTableRowHandle ActorDetails;
+		ActorDetails.DataTable = Cast<UDataTable>(FSoftObjectPath(TEXT("/InventorySystem/DataTables/GroundItemTable.GroundItemTable")).ResolveObject());
+		FGroundItemDetail* FoundDetails = ActorDetails.DataTable->FindRow<FGroundItemDetail>(*DroppedSlot.Item.Name, "");
 
-		// Get and search the datatable for the item details
-		FSoftObjectPath DataTablePath = FSoftObjectPath(TEXT("/InventorySystem/DataTables/GroundItemTable.GroundItemTable"));
-		UDataTable* DataTable = Cast<UDataTable>(DataTablePath.ResolveObject());
-		FGroundItemDetail* FoundDetails = DataTable->FindRow<FGroundItemDetail>(*DroppedSlot.Item.Name, "");
-
+		// If it finds a matching row, 
 		if (FoundDetails != nullptr)
 		{
-			// If it's been found, spawn an item with the details into the world at 0,0,0
+			// spawn the item in the world, then remove it from the inventory
 			AGroundItem* ThisItem = GetWorld()->SpawnActor<AGroundItem>();
 			ThisItem->InitialiseItem(FTransform(), AsConst(*FoundDetails), DroppedSlot);
 			RemoveItem(Name, Amount);
-			return true;
+			return true; // if removed, return successful
 		}
-
 	}
 
-	return false;
+	return false; // if not removed, return not successful
 }
 
 TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots(FString FieldName)

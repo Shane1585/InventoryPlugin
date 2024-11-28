@@ -80,6 +80,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	bool RemoveItem(FString Name, int Amount);
 
+	/**
+	 * Drops the item, if found, to the ground. Cannot drop more than exist in the Inventory.
+	 * If amount is more than exist in the inventory, then it will drop up to the number in the inventory, and return
+	 * success.
+	 * 
+	 * @param Name Name of the item to drop
+	 * @param Amount Amount of the item to drop
+	 * @return True, if an item has been dropped
+	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	bool DropItem(FString Name, int Amount);
 
