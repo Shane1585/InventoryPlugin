@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Components/BoxComponent.h"
 #include "InventoryInteractArea.generated.h"
 
 
@@ -24,5 +25,32 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-		
+	/**
+	 * The trigger box for interaction
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item interaction")
+	UBoxComponent* InteractTriggerBox = CreateDefaultSubobject<UBoxComponent>(TEXT("InteractTriggerBox"));
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item interaction")
+	FVector TriggerBoxScale = FVector();
+	
+	/**
+	 * Sets up the trigger box to be in the world and interacted with.
+	 *
+	 * Runs automatically on start with scale given. If a new scale is given, this will need to be re-run.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Item interaction")
+	void InitialiseTriggerBox();
+
+	/**
+	 * Sets up player to have this inventory openable, if overlapping trigger box
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Item interaction")
+	void OverlappingInventory(AActor* OverlappedActor, AActor* OtherActor);
+
+	/**
+	 * Sets up player to have this inventory not-openable, if no longer overlapping trigger box
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Item interaction")
+	void StoppedOverlappingInventory(AActor* OverlappedActor, AActor* OtherActor);
 };
