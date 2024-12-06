@@ -28,11 +28,14 @@ public:
 	/**
 	 * The trigger box for interaction
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item interaction")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory interaction")
 	UBoxComponent* InteractTriggerBox = CreateDefaultSubobject<UBoxComponent>(TEXT("InteractTriggerBox"));
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item interaction")
-	FVector TriggerBoxScale = FVector();
+	/**
+	 * The size for the trigger box to use to enable interaction
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory interaction")
+	FVector TriggerBoxScale = FVector(100, 100, 100);
 	
 	/**
 	 * Sets up the trigger box to be in the world and interacted with.

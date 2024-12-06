@@ -3,7 +3,7 @@
 
 #include "InventoryInteractArea.h"
 
-#include "ComponentUtils.h"
+#include "ParentInventoryUIComponent.h"
 
 // Sets default values for this component's properties
 UInventoryInteractArea::UInventoryInteractArea()
@@ -11,14 +11,7 @@ UInventoryInteractArea::UInventoryInteractArea()
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
-	this->InteractTriggerBox->SetupAttachment(this->GetOwner()->GetRootComponent());
-	this->InteractTriggerBox->SetRelativeTransform(FTransform());
-	this->InteractTriggerBox->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
-	this->InteractTriggerBox->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
-	this->InteractTriggerBox->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-	this->InteractTriggerBox->SetGenerateOverlapEvents(true);
 
-	// ...
 }
 
 
@@ -44,15 +37,28 @@ void UInventoryInteractArea::InitialiseTriggerBox()
 {
 	// sets the trigger box size and adds an overlap event to this actor
 	this->InteractTriggerBox->SetBoxExtent(TriggerBoxScale);
-	this->InteractTriggerBox->GetOwner()->OnActorBeginOverlap.AddDynamic(this, &UInventoryInteractArea::OverlappingInventory);
-	this->InteractTriggerBox->GetOwner()->OnActorEndOverlap.AddDynamic(this, &UInventoryInteractArea::StoppedOverlappingInventory);
+	this->InteractTriggerBox->SetRelativeTransform(FTransform());
+	this->InteractTriggerBox->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
+	this->InteractTriggerBox->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
+	this->InteractTriggerBox->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	this->InteractTriggerBox->SetGenerateOverlapEvents(true);
+
+	this->InteractTriggerBox->AttachToComponent(this->GetOwner()->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+
+	this->GetOwner()->OnActorBeginOverlap.AddDynamic(this, &UInventoryInteractArea::OverlappingInventory);
+	this->GetOwner()->OnActorEndOverlap.AddDynamic(this, &UInventoryInteractArea::StoppedOverlappingInventory);
 }
 
 void UInventoryInteractArea::OverlappingInventory(AActor* OverlappedActor, AActor* OtherActor)
 {
 	if(OtherActor == GetWorld()->GetFirstPlayerController()->GetPawn())
 	{
-		TSet<UActorComponent*> Components = GetWorld()->GetFirstPlayerController()->GetPawn()->GetComponents();
+		TArray<UParentInventoryUIComponent*> UIComponents;
+		TArray<UInventoryComponent*> InventoryComponents;
+
+		GetWorld()->GetFirstPlayerController()->GetPawn()->GetComponents<UParentInventoryUIComponent>(UIComponents);
+		GetOwner()->GetComponents<UInventoryComponent>(InventoryComponents);
+		UIComponents[1]->EnableInventoryUI(InventoryComponents[0]);
 	}
 }
 

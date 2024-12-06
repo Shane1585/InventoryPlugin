@@ -25,9 +25,9 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	UFUNCTION(Blueprintable, BlueprintCallable, Category = "Item interaction")
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Item interaction")
 	void EnableInventoryUI(UInventoryComponent* InventoryRepresented);
 	
-	UFUNCTION(Blueprintable, BlueprintCallable, Category = "Item interaction")
+	UFUNCTION(BlueprintImplementableEvent,  BlueprintCallable, Category = "Item interaction")
 	void DisableInventoryUI();
 };

@@ -32,11 +32,3 @@ void UParentInventoryUIComponent::TickComponent(float DeltaTime, ELevelTick Tick
 	// ...
 }
 
-void UParentInventoryUIComponent::EnableInventoryUI(UInventoryComponent* InventoryRepresented)
-{
-}
-
-void UParentInventoryUIComponent::DisableInventoryUI()
-{
-}
-
