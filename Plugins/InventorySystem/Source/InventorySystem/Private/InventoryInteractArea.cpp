@@ -58,11 +58,34 @@ void UInventoryInteractArea::OverlappingInventory(AActor* OverlappedActor, AActo
 
 		GetWorld()->GetFirstPlayerController()->GetPawn()->GetComponents<UParentInventoryUIComponent>(UIComponents);
 		GetOwner()->GetComponents<UInventoryComponent>(InventoryComponents);
-		UIComponents[1]->EnableInventoryUI(InventoryComponents[0]);
+
+		if (InventoryComponents.Num() > 0)
+		{
+			for(int i = 0; i < UIComponents.Num(); i++)
+			{
+				if (!UIComponents[i]->IsPlayerInventory)
+				{
+					UIComponents[1]->EnableInventoryUI(InventoryComponents[0]);
+					break;
+				}
+			}
+		}
 	}
 }
 
 void UInventoryInteractArea::StoppedOverlappingInventory(AActor* OverlappedActor, AActor* OtherActor)
 {
+	if(OtherActor == GetWorld()->GetFirstPlayerController()->GetPawn())
+	{
+		TArray<UParentInventoryUIComponent*> UIComponents;
+		
+		// 1. How do we know if the component we're enabling isn't the player inventory component?
+		// 2. What if they haven't set it up right, and there aren't any valid UI or inventory components?
+		GetWorld()->GetFirstPlayerController()->GetPawn()->GetComponents<UParentInventoryUIComponent>(UIComponents);
+		UIComponents[1]->DisableInventoryUI();
+
+	}
+
+
 }
 

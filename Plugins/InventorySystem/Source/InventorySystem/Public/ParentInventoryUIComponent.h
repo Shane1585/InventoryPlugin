@@ -30,4 +30,7 @@ public:
 	
 	UFUNCTION(BlueprintImplementableEvent,  BlueprintCallable, Category = "Item interaction")
 	void DisableInventoryUI();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item interaction")
+	bool IsPlayerInventory;
 };
