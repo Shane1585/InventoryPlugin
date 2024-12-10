@@ -48,9 +48,24 @@ public:
 	 *
 	 * Carry weight is disabled with a value of 0 or less in this variable.
 	 */
-	UPROPERTY(BlueprintType, EditAnywhere, BlueprintReadWrite, Category="Item Detail")
+	UPROPERTY(BlueprintType, EditAnywhere, BlueprintReadWrite, Category="Item Effects")
 	float CarryWeightLimit = 0;
 
+	/**
+	 * Whether or not this character is currently encumbered.
+	 * Defaults to false, should always be false for non-characters, which do not have a move speed.
+	 * Should always be false for characters with a weight limit 0 inventory.
+	 */
+	UPROPERTY(BlueprintType, EditAnywhere, BlueprintReadWrite, Category="Inventory Effects")
+	bool IsEncumbered = false;
+
+	/**
+	 * How much slower to make the owning character when the inventory is over the weight limit
+	 * (multiplier on base speed)
+	 */
+	UPROPERTY(BlueprintType, EditAnywhere, BlueprintReadWrite, Category="Inventory Effects")
+	float MoveSpeedMultiplierWhileEncumbered = 0.5;
+	
 	/**
 	 * Whether or not this inventory has an item with a matching name.
 	 * 
@@ -59,7 +74,7 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
 	bool HasItem(FString Name);
-	
+
 	/**
 	 * Increases the amount of the item in a slot if it already exists. Otherwise, adds the item to a new slot.
 	 * 
@@ -135,5 +150,31 @@ public:
 	 */
 	TArray<FInventorySlot> GetOrderBy(FString FieldName);
 
+	/**
+	 * Calculates if the character needs to be encumbered, and sets it if it does, and removes it if it doesn't.
+	 * Only applies changes where the character encumberment needs to be changed.
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	void RecalculateEncumberment();
+
+	/**
+	 * @return Whether the character should be currently encumbered
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	bool NeedsEncumberment();
+
+	/**
+	 * Adds the effects of the encumberment to the character
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	void AddEncumberment();
+
+	/**
+	 * Removes the effects of the encumberment on the character.
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	void RemoveEncumberment();
 
 };
+
+

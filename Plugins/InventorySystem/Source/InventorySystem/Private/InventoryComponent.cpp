@@ -7,6 +7,8 @@
 #include "GroundItemDetail.h"
 #include "SGraphPinDataTableRowName.h"
 #include "SortingFunctions.h"
+#include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values for this component's properties
 UInventoryComponent::UInventoryComponent()
@@ -71,6 +73,9 @@ bool UInventoryComponent::AddItem(FItem Item, int Amount)
 	slot.Item = Item;
 	slot.Amount = Amount;
 	Slots.Add(slot);
+
+	RecalculateEncumberment();
+
 	return true;
 }
 
@@ -92,11 +97,13 @@ bool UInventoryComponent::RemoveItem(FString Name, int Amount)
 			{
 				Slots[i].Amount = Slots[i].Amount - Amount; // remove an amount
 			}
+
+			RecalculateEncumberment();
 			
 			return true;
 		}
 	}
-	
+
 	return false;
 }
 
@@ -240,7 +247,56 @@ TArray<FInventorySlot> UInventoryComponent::GetOrderBy(FString FieldName)
 	return SortedSlots;
 }
 
+void UInventoryComponent::RecalculateEncumberment()
+{
+	// If encumberment doesn't match previous encumberment, then add or remove encumberment
+	bool ShouldBeEncumbered = NeedsEncumberment();
+	if (ShouldBeEncumbered != IsEncumbered)
+	{
+		if (ShouldBeEncumbered)
+		{
+			AddEncumberment();
+		}
+		else
+		{
+			RemoveEncumberment();
+		}
+	}
+}
 
+bool UInventoryComponent::NeedsEncumberment()
+{
+	return(
+		HasAWeightLimit() // needs a weight limit to be encumbered AND:
+		&& GetRemainingWeight() <= 0 // needs to have negative remaining limit to be encumbered AND:
+		&& GetOwner()->IsA(ACharacter::StaticClass()) // needs to be a character to be encumbered
+		);
+}
+
+void UInventoryComponent::AddEncumberment()
+{
+	// If a character, and not already encumbered
+	if (GetOwner()->IsA(ACharacter::StaticClass())  && IsEncumbered == false)
+	{
+		// Reduce max walk speed to encumber the character
+		ACharacter* OwningCharacter = Cast<ACharacter>(GetOwner());
+		OwningCharacter->GetCharacterMovement()->MaxWalkSpeed *= MoveSpeedMultiplierWhileEncumbered;
+		IsEncumbered = true;
+	}
+}
+
+void UInventoryComponent::RemoveEncumberment()
+{
+	// If a character, and encumbered
+
+	if (GetOwner()->IsA(ACharacter::StaticClass()) && IsEncumbered == true)
+	{
+		// Increase max walk speed to encumber the character
+		ACharacter* OwningCharacter = Cast<ACharacter>(GetOwner());
+		OwningCharacter->GetCharacterMovement()->MaxWalkSpeed *= (1/MoveSpeedMultiplierWhileEncumbered);
+		IsEncumbered = false;
+	}
+}
 
 
 
