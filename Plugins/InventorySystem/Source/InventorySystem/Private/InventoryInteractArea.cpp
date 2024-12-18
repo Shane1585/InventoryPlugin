@@ -43,16 +43,20 @@ void UInventoryInteractArea::InitialiseTriggerBox()
 	this->InteractTriggerBox->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	this->InteractTriggerBox->SetGenerateOverlapEvents(true);
 
+    // attaches trigger box to this actor so they move together
 	this->InteractTriggerBox->AttachToComponent(this->GetOwner()->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 
+	// adds events for begin and end overlap
 	this->GetOwner()->OnActorBeginOverlap.AddDynamic(this, &UInventoryInteractArea::OverlappingInventory);
 	this->GetOwner()->OnActorEndOverlap.AddDynamic(this, &UInventoryInteractArea::StoppedOverlappingInventory);
 }
 
 void UInventoryInteractArea::OverlappingInventory(AActor* OverlappedActor, AActor* OtherActor)
 {
+	// if the other actor is the player
 	if(OtherActor == GetWorld()->GetFirstPlayerController()->GetPawn())
 	{
+		// Gets the inventory of the overlapping actor
 		TArray<UParentInventoryUIComponent*> UIComponents;
 		TArray<UInventoryComponent*> InventoryComponents;
 
@@ -63,8 +67,10 @@ void UInventoryInteractArea::OverlappingInventory(AActor* OverlappedActor, AActo
 		{
 			for(int i = 0; i < UIComponents.Num(); i++)
 			{
+				// sets up the overlapping actors inventory to be showable on players UI, if not a player inventory
 				if (!UIComponents[i]->IsPlayerInventory)
 				{
+					// 2nd UI component on the player is the non-player inventory UI
 					UIComponents[1]->EnableInventoryUI(InventoryComponents[0]);
 					break;
 				}
@@ -75,6 +81,7 @@ void UInventoryInteractArea::OverlappingInventory(AActor* OverlappedActor, AActo
 
 void UInventoryInteractArea::StoppedOverlappingInventory(AActor* OverlappedActor, AActor* OtherActor)
 {
+	// If non-overlapping actor is the player
 	if(OtherActor == GetWorld()->GetFirstPlayerController()->GetPawn())
 	{
 		TArray<UParentInventoryUIComponent*> UIComponents;

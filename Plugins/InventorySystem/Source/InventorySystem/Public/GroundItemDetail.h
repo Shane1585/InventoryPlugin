@@ -42,7 +42,7 @@ struct INVENTORYSYSTEM_API FGroundItemDetail: public FTableRowBase
 	
 	FGroundItemDetail()
 	{
-		// Set some sensible initial values in the constructor
+		// Set some sensible initial values in the constructor (shows an error item)
 		Name = "";
 		ItemScale = FVector(0.2, 0.2, 0.2);
 		InteractAreaScale = FVector(200, 200, 200);
