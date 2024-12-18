@@ -8,6 +8,8 @@
 /**
  * This class stores info about the item as it appears in the world.
  * E.G: the mesh it uses and how big it is.
+ *
+ * Without creating a row for this, the item will use a default mesh and scale.
  */
 USTRUCT(BlueprintType, Blueprintable)
 struct INVENTORYSYSTEM_API FGroundItemDetail: public FTableRowBase
@@ -42,9 +44,9 @@ struct INVENTORYSYSTEM_API FGroundItemDetail: public FTableRowBase
 	{
 		// Set some sensible initial values in the constructor
 		Name = "";
-		ItemScale = FVector(1, 1, 1);
-		InteractAreaScale = FVector(1, 1, 1);
-		StaticMeshPath = "";
+		ItemScale = FVector(0.2, 0.2, 0.2);
+		InteractAreaScale = FVector(200, 200, 200);
+		StaticMeshPath = "/InventorySystem/DataTableExampleMeshes/SM_ErrorMesh";
 	}
 	
 

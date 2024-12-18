@@ -19,10 +19,15 @@ class INVENTORYSYSTEM_API UInventorySlotUIWrapper : public UObject
 	GENERATED_BODY()
 
 public:
-	// Slots to show in the UI
+	/**
+	 * Slots to show in the UI
+	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory slot details")
 	FInventorySlot Slot;
 
+	/**
+	 * The inventory that the slot exists in
+	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory slot details")
 	UInventoryComponent* RelatedInventory;
 	

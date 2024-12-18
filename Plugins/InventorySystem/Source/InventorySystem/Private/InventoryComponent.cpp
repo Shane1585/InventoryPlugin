@@ -64,16 +64,16 @@ bool UInventoryComponent::AddItem(FItem Item, int Amount)
 		if(ThisSlot.Item == Item)
 		{
 			Slots[i].Amount = Slots[i].Amount + Amount;
+			RecalculateEncumberment();
 			return true; // returns true and exists after the amount has been added to one slot
 		}
 	}
 
-	//if not found (not added), add a new slot
+	//if not found (not added in for loop), add a new slot
 	FInventorySlot slot = FInventorySlot();
 	slot.Item = Item;
 	slot.Amount = Amount;
 	Slots.Add(slot);
-
 	RecalculateEncumberment();
 
 	return true;
@@ -81,15 +81,15 @@ bool UInventoryComponent::AddItem(FItem Item, int Amount)
 
 bool UInventoryComponent::RemoveItem(FString Name, int Amount)
 {
-	//Loops through all slots
+	// Loops through all slots
 	for(int i = 0; i < Slots.Num(); i++)
 	{
-		// Checks if we have found the item with matching name
+		// Checks if found the item with matching name
 		FInventorySlot ThisSlot = Slots[i];
 		if(ThisSlot.Item.Name == Name)
 		{
-			//Gets amount of item and removes it from the slot, or deletes slot if there are too many to remove
-			if(ThisSlot.Amount <= Amount) // if you have too many to remove
+			// Gets amount of item and removes it from the slot, or deletes slot if there are too many to remove
+			if(ThisSlot.Amount <= Amount) // if inventory has too many to remove
 			{
 				Slots.RemoveAt(i); // remove slot
 			}
@@ -127,7 +127,7 @@ bool UInventoryComponent::DropItem(FString Name, int Amount, FTransform DropLoca
 			}
 			DroppedSlot = ThisSlot;
 			FoundItem = true;
-			break; // don't keep searching
+			break; // don't keep searching, exit the for loop
 		}
 	}
 
@@ -145,6 +145,14 @@ bool UInventoryComponent::DropItem(FString Name, int Amount, FTransform DropLoca
 			// spawn the item in the world, then remove it from the inventory
 			AGroundItem* ThisItem = GetWorld()->SpawnActor<AGroundItem>();
 			ThisItem->InitialiseItem(DropLocation, AsConst(*FoundDetails), DroppedSlot);
+			RemoveItem(Name, Amount);
+			return true; // if removed, return successful
+		}
+		else
+		{
+			// spawn a default mesh in the world, then remove it from the inventory
+			AGroundItem* ThisItem = GetWorld()->SpawnActor<AGroundItem>();
+			ThisItem->InitialiseItem(DropLocation, FGroundItemDetail(), DroppedSlot);
 			RemoveItem(Name, Amount);
 			return true; // if removed, return successful
 		}

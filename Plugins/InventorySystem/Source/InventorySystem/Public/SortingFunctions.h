@@ -16,22 +16,44 @@ public:
 	SortingFunctions();
 	~SortingFunctions();
 
-	// Compares name of value a to b, returns true if a is bigger or the same.
+	/**
+	 * @param a InventorySlot A
+	 * @param b InventorySlot B
+	 * @return True, if A's name is bigger or the same (bigger = earlier in the alphabet)
+	 */
 	static bool CompareFInventorySlotNamesAsc(const FInventorySlot& a, const FInventorySlot& b);
 
-	// Compares name of value a to b, returns true if a is smaller.
-	static bool CompareFInventorySlotNamesDesc(const FInventorySlot& a, const FInventorySlot& b);
+	/**
+	 * @param a InventorySlot A
+	 * @param b InventorySlot B
+	 * @return True, if A's name is smaller (smaller = later in the alphabet)
+	 */	static bool CompareFInventorySlotNamesDesc(const FInventorySlot& a, const FInventorySlot& b);
 
-	// Compares weight of value a to b, returns true if a is bigger or the same.
+	/**
+	* @param a InventorySlot A
+	* @param b InventorySlot B
+	* @return True, if A's weight is bigger or the same (individual item weight)
+	**/
 	static bool CompareFInventorySlotWeightsAsc(const FInventorySlot& a, const FInventorySlot& b);
 
-	// Compares weight of value a to b, returns true if a is smaller.
+	/**
+	* @param a InventorySlot A
+	* @param b InventorySlot B
+	* @return True, if A's weight is smaller (individual item weight)
+	**/
 	static bool CompareFInventorySlotWeightsDesc(const FInventorySlot& a, const FInventorySlot& b);
 
-	// Compares amounts of item in a to b, returns true if a is bigger or the same.
+	/**
+	* @param a InventorySlot A
+	* @param b InventorySlot B
+	* @return True, if the number of A's items is larger or the same
+	**/
 	static bool CompareFInventorySlotAmountsAsc(const FInventorySlot& a, const FInventorySlot& b);
 
-	// Compares amounts of a to b, returns true if a is smaller.
-	static bool CompareFInventorySlotAmountsDesc(const FInventorySlot& a, const FInventorySlot& b);
+	/**
+	* @param a InventorySlot A
+	* @param b InventorySlot B
+	* @return True, if the number of A's items is smaller
+	**/	static bool CompareFInventorySlotAmountsDesc(const FInventorySlot& a, const FInventorySlot& b);
 
 };

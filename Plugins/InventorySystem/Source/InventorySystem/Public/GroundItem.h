@@ -20,10 +20,11 @@ class INVENTORYSYSTEM_API AGroundItem : public AStaticMeshActor
 public:	
 	// Sets default values for this actor's properties
 	AGroundItem();
-
 	
 	/**
-	 * The info of the item if picked up. 
+	 * The info of the item if picked up.
+	 * (Inventory slot is just an items information + an amount, this could be expanded in the future and something
+	 * new used here)
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item details")
 	FInventorySlot InventoryDetails;
@@ -34,8 +35,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item appearence")
 	UBoxComponent* InteractTriggerBox = CreateDefaultSubobject<UBoxComponent>(TEXT("InteractTriggerBox"));
 
-	// UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item appearence", meta=(RowType="GroundItemDetail"))
-	// FDataTableRowHandle ActorDetails;
 
 protected:
 	// Called when the game starts or when spawned
@@ -56,6 +55,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Drop and pickup")
 	void InitialiseItem(FTransform Transform, FGroundItemDetail NewActorDetails, FInventorySlot NewInventoryDetails);
 
+	/**
+	 * Removes the item from the world, adds matching item information to the player or actor containing an Inventory.
+	 * @param OverlappedActor The actor that is overlapped (this)
+	 * @param OtherActor The actor overlapping this actor
+	 */
 	UFUNCTION(BlueprintCallable, Category = "Drop and pickup")
 	void PickupItem(AActor* OverlappedActor, AActor* OtherActor);
 

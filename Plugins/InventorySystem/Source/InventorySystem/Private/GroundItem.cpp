@@ -60,11 +60,13 @@ void AGroundItem::InitialiseItem(FTransform Transform, FGroundItemDetail NewActo
 
 void AGroundItem::PickupItem(AActor* OverlappedActor, AActor* OtherActor)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Overlapping"));
+	// On overlap, gets the overlapping actors inventory, adds this item to the inventory, and deletes this item
 	UInventoryComponent* Inventory = Cast<UInventoryComponent>(OtherActor->GetComponentByClass(UInventoryComponent::StaticClass()));
-	Inventory->AddItem(InventoryDetails.Item, InventoryDetails.Amount);
-
-	this->Destroy();
+	if (Inventory != nullptr)
+	{
+		Inventory->AddItem(InventoryDetails.Item, InventoryDetails.Amount);
+		this->Destroy();
+	}
 }
 
 

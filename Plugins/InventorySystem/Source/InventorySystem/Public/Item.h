@@ -6,7 +6,7 @@
 #include "Item.generated.h"
 
 /**
- * This class stores the name and other important details about a single item.
+ * This struct stores the name and other important details about a single item.
  */
 USTRUCT(BlueprintType, Blueprintable)
 struct INVENTORYSYSTEM_API FItem

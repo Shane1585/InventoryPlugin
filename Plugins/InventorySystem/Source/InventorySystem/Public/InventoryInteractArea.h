@@ -7,7 +7,11 @@
 #include "Components/BoxComponent.h"
 #include "InventoryInteractArea.generated.h"
 
-
+/**
+ * This is an area in which another inventory can be interacted with.
+ *
+ * This can be used for any actor that stores items (e.g. chests)
+ */
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class INVENTORYSYSTEM_API UInventoryInteractArea : public UActorComponent
 {

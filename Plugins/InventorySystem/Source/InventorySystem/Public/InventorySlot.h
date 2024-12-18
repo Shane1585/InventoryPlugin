@@ -8,6 +8,8 @@
 
 /**
  * Stores information about a single slot in the inventory
+ *
+ * This is currently an item + an amount of an item.
  */
 USTRUCT(BlueprintType, Blueprintable)
 struct INVENTORYSYSTEM_API FInventorySlot

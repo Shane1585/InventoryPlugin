@@ -14,6 +14,7 @@
  * the player, a chest, etc.)
  *
  * This has a number of slots, to which items can be added, along with an optional weight limit.
+ * When the weight limit has been exceeded, it will add encumbrance to the owning Character (ignored if not a character)
  */
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class INVENTORYSYSTEM_API UInventoryComponent : public UActorComponent
@@ -32,14 +33,12 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-
+	
 	/**
 	 * List of slots containing items and other slot data (such as amount of an item) in this inventory.
 	 */
 	UPROPERTY(BlueprintType, EditAnywhere, Category="Inventory")
 	TArray<FInventorySlot> Slots;
-
 	
 	/**
 	 * Amount of weight that can be carried in the inventory.
