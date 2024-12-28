@@ -1,8 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "GroundItem.h"
-
 #include "GroundItemDetail.h"
 #include "InventoryComponent.h"
 
@@ -28,7 +24,6 @@ AGroundItem::AGroundItem()
 void AGroundItem::BeginPlay()
 {
 	Super::BeginPlay();
-
 }
 
 // Called every frame
@@ -64,7 +59,7 @@ void AGroundItem::PickupItem(AActor* OverlappedActor, AActor* OtherActor)
 	UInventoryComponent* Inventory = Cast<UInventoryComponent>(OtherActor->GetComponentByClass(UInventoryComponent::StaticClass()));
 	if (Inventory != nullptr)
 	{
-		Inventory->AddItem(InventoryDetails.Item, InventoryDetails.Amount);
+		Inventory->AddItem(InventoryDetails.Item.RowName, InventoryDetails.Amount);
 		this->Destroy();
 	}
 }

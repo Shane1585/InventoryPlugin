@@ -1,8 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "InventoryInteractArea.h"
-
 #include "ParentInventoryUIComponent.h"
 
 // Sets default values for this component's properties
@@ -67,7 +63,7 @@ void UInventoryInteractArea::OverlappingInventory(AActor* OverlappedActor, AActo
 		{
 			for(int i = 0; i < UIComponents.Num(); i++)
 			{
-				// sets up the overlapping actors inventory to be showable on players UI, if not a player inventory
+				// sets up the overlapping actors inventory to be show able on players UI, if not a player inventory
 				if (!UIComponents[i]->IsPlayerInventory)
 				{
 					// 2nd UI component on the player is the non-player inventory UI
@@ -86,8 +82,6 @@ void UInventoryInteractArea::StoppedOverlappingInventory(AActor* OverlappedActor
 	{
 		TArray<UParentInventoryUIComponent*> UIComponents;
 		
-		// 1. How do we know if the component we're enabling isn't the player inventory component?
-		// 2. What if they haven't set it up right, and there aren't any valid UI or inventory components?
 		GetWorld()->GetFirstPlayerController()->GetPawn()->GetComponents<UParentInventoryUIComponent>(UIComponents);
 		UIComponents[1]->DisableInventoryUI();
 

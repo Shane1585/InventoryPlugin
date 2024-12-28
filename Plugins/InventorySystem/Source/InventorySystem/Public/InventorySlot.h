@@ -1,9 +1,6 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Item.h"
 #include "InventorySlot.generated.h"
 
 /**
@@ -20,8 +17,8 @@ struct INVENTORYSYSTEM_API FInventorySlot
 	/**
 	 * Item held in this slot
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory slot details")
-	FItem Item;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(RowType="FItem"))
+	FDataTableRowHandle Item;
 
 	/**
 	 * The amount of the item held in this slot.
@@ -32,7 +29,11 @@ struct INVENTORYSYSTEM_API FInventorySlot
 	FInventorySlot()
 	{
 		// Set some sensible defaults in the constructor to prevent errors
-		Item = FItem();
 		Amount = 1;
+
+		// Initialises item to error item (if not set)
+		static ConstructorHelpers::FObjectFinder<UDataTable> DataTableObj(TEXT("DataTable'/InventorySystem/DataTables/DT_ItemTable.DT_ItemTable'"));
+		Item.DataTable = DataTableObj.Object;
+		Item.RowName = FName(TEXT("ErrorItem"));
 	}
 };

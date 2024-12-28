@@ -1,11 +1,8 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "InventoryComponent.h"
 
 #include "GroundItem.h"
 #include "GroundItemDetail.h"
-#include "SGraphPinDataTableRowName.h"
+#include "Item.h"
 #include "SortingFunctions.h"
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -25,7 +22,9 @@ UInventoryComponent::UInventoryComponent()
 void UInventoryComponent::BeginPlay()
 {
 	Super::BeginPlay();
-	// ...
+
+	// Encumber character if starting overweight
+	RecalculateEncumberment();
 	
 }
 
@@ -38,14 +37,14 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	// ...
 }
 
-bool UInventoryComponent::HasItem(FString Name)
+bool UInventoryComponent::HasItem(FName ItemRowName)
 {
 	// for every slot
 	for(int i = 0; i < Slots.Num(); i++)
 	{
 		// if any slot has a matching name, exit and return true.
 		FInventorySlot ThisSlot = Slots[i];
-		if(ThisSlot.Item.Name==Name)
+		if(ThisSlot.Item.RowName == ItemRowName)
 		{
 			return true;
 		}
@@ -54,14 +53,14 @@ bool UInventoryComponent::HasItem(FString Name)
 	return false;
 }
 
-bool UInventoryComponent::AddItem(FItem Item, int Amount)
+bool UInventoryComponent::AddItem(FName ItemRowName, int Amount)
 {
 	// for each slot
 	for(int i = 0; i < Slots.Num(); i++)
 	{
 		// searches for a slot with a matching item, then adds amount to the slot
 		FInventorySlot ThisSlot = Slots[i];
-		if(ThisSlot.Item == Item)
+		if(ThisSlot.Item.RowName == ItemRowName)
 		{
 			Slots[i].Amount = Slots[i].Amount + Amount;
 			RecalculateEncumberment();
@@ -71,7 +70,7 @@ bool UInventoryComponent::AddItem(FItem Item, int Amount)
 
 	//if not found (not added in for loop), add a new slot
 	FInventorySlot slot = FInventorySlot();
-	slot.Item = Item;
+	slot.Item.RowName = ItemRowName;
 	slot.Amount = Amount;
 	Slots.Add(slot);
 	RecalculateEncumberment();
@@ -79,23 +78,23 @@ bool UInventoryComponent::AddItem(FItem Item, int Amount)
 	return true;
 }
 
-bool UInventoryComponent::RemoveItem(FString Name, int Amount)
+bool UInventoryComponent::RemoveItem(FName ItemRowName, int Amount)
 {
 	// Loops through all slots
 	for(int i = 0; i < Slots.Num(); i++)
 	{
 		// Checks if found the item with matching name
 		FInventorySlot ThisSlot = Slots[i];
-		if(ThisSlot.Item.Name == Name)
+		if(ThisSlot.Item.RowName == ItemRowName)
 		{
 			// Gets amount of item and removes it from the slot, or deletes slot if there are too many to remove
 			if(ThisSlot.Amount <= Amount) // if inventory has too many to remove
 			{
-				Slots.RemoveAt(i); // remove slot
+				Slots.RemoveAt(i); // remove the slot
 			}
 			else
 			{
-				Slots[i].Amount = Slots[i].Amount - Amount; // remove an amount
+				Slots[i].Amount = Slots[i].Amount - Amount; // remove an amount from the slot
 			}
 
 			RecalculateEncumberment();
@@ -107,7 +106,7 @@ bool UInventoryComponent::RemoveItem(FString Name, int Amount)
 	return false;
 }
 
-bool UInventoryComponent::DropItem(FString Name, int Amount, FTransform DropLocation)
+bool UInventoryComponent::DropItem(FName ItemRowName, int Amount, FTransform DropLocation)
 {
 	//Which slot details are being dropped, and if it can be found
 	FInventorySlot DroppedSlot;
@@ -117,7 +116,7 @@ bool UInventoryComponent::DropItem(FString Name, int Amount, FTransform DropLoca
 	for(int i = 0; i < Slots.Num(); i++)
 	{
 		FInventorySlot ThisSlot = Slots[i];
-		if(ThisSlot.Item.Name == Name) // if found
+		if(ThisSlot.Item.RowName == ItemRowName) // if found
 		{
 			//Gets amount of item and removes it from the slot, or deletes slot if there are too few to remove
 			// and changes the amount being dropped if there are too few
@@ -136,8 +135,8 @@ bool UInventoryComponent::DropItem(FString Name, int Amount, FTransform DropLoca
 	{
 		// Get the row in FGroundItemDetail datatable to match the name of the item in the inventory slot
 		FDataTableRowHandle ActorDetails;
-		ActorDetails.DataTable = Cast<UDataTable>(FSoftObjectPath(TEXT("/InventorySystem/DataTables/GroundItemTable.GroundItemTable")).ResolveObject());
-		FGroundItemDetail* FoundDetails = ActorDetails.DataTable->FindRow<FGroundItemDetail>(*DroppedSlot.Item.Name, "");
+		ActorDetails.DataTable = Cast<UDataTable>(FSoftObjectPath(TEXT("/InventorySystem/DataTables/DT_GroundItemTable.DT_GroundItemTable")).ResolveObject());
+		FGroundItemDetail* FoundDetails = ActorDetails.DataTable->FindRow<FGroundItemDetail>(DroppedSlot.Item.RowName, "");
 
 		// If it finds a matching row, 
 		if (FoundDetails != nullptr)
@@ -145,7 +144,7 @@ bool UInventoryComponent::DropItem(FString Name, int Amount, FTransform DropLoca
 			// spawn the item in the world, then remove it from the inventory
 			AGroundItem* ThisItem = GetWorld()->SpawnActor<AGroundItem>();
 			ThisItem->InitialiseItem(DropLocation, AsConst(*FoundDetails), DroppedSlot);
-			RemoveItem(Name, Amount);
+			RemoveItem(ItemRowName, Amount);
 			return true; // if removed, return successful
 		}
 		else
@@ -153,7 +152,7 @@ bool UInventoryComponent::DropItem(FString Name, int Amount, FTransform DropLoca
 			// spawn a default mesh in the world, then remove it from the inventory
 			AGroundItem* ThisItem = GetWorld()->SpawnActor<AGroundItem>();
 			ThisItem->InitialiseItem(DropLocation, FGroundItemDetail(), DroppedSlot);
-			RemoveItem(Name, Amount);
+			RemoveItem(ItemRowName, Amount);
 			return true; // if removed, return successful
 		}
 	}
@@ -176,8 +175,6 @@ TArray<UInventorySlotUIWrapper*> UInventoryComponent::GetInventorySlots(FString 
 		InventorySlots.Add(Wrapper);
 	}
 	
-	
-
 	return InventorySlots;
 }
 
@@ -205,7 +202,7 @@ float UInventoryComponent::GetCurrentWeight()
 	for(int i = 0; i < Slots.Num(); i++)
 	{
 		// add to the total weight the weight of an item, multiplied by the amount
-		TotalWeight += Slots[i].Item.Weight * Slots[i].Amount;
+		TotalWeight += Slots[i].Item.GetRow<FItem>("")->Weight * Slots[i].Amount;
 	}
 	
 	return TotalWeight;

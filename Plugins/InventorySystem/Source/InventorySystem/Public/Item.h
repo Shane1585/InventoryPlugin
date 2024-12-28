@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -9,7 +7,7 @@
  * This struct stores the name and other important details about a single item.
  */
 USTRUCT(BlueprintType, Blueprintable)
-struct INVENTORYSYSTEM_API FItem
+struct INVENTORYSYSTEM_API FItem: public FTableRowBase
 {
 	GENERATED_BODY()
 	
@@ -45,5 +43,4 @@ struct INVENTORYSYSTEM_API FItem
 	 */
 	bool operator == (FItem Other);
 	
-
 };

@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -32,6 +30,13 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	/**
+	 * True, if the player inventory (False if a chest or other inventory). Used to decide which side to show the
+	 * inventory on.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item interaction")
+	bool IsPlayerInventory = false;
+
+	/**
 	 * Allows the inventory to be shown (does not show it, opened by player interaction. This lets the player open it)
 	 * @param InventoryRepresented The inventory that can be shown
 	 */
@@ -46,10 +51,4 @@ public:
 	UFUNCTION(BlueprintImplementableEvent,  BlueprintCallable, Category = "Item interaction")
 	void DisableInventoryUI();
 
-	/**
-	 * True, if the player inventory (False if a chest or other inventory). Used to decide which side to show the
-	 * inventory on.
-	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item interaction")
-	bool IsPlayerInventory;
 };

@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -68,43 +66,43 @@ public:
 	/**
 	 * Whether or not this inventory has an item with a matching name.
 	 * 
-	 * @param Name Name or the item to check in the array
+	 * @param ItemRowName Name of the row in the item table
 	 * @return True if name of item is found
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
-	bool HasItem(FString Name);
+	bool HasItem(FName ItemRowName);
 
 	/**
 	 * Increases the amount of the item in a slot if it already exists. Otherwise, adds the item to a new slot.
 	 * 
-	 * @param Item The item to add to this inventory
+	 * @param ItemRowName Name of the row in the item table
 	 * @param Amount The amount of the item to add
-	 * @return True if successfully added
+	 * @retthurn True if successfully added
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
-	bool AddItem(FItem Item, int Amount);
+	bool AddItem(FName ItemRowName, int Amount);
 	
 	/**
 	 * Removes the amount of the item from a slot if it exists. If there are none left, it will destroy the slot.
 	 * 
-	 * @param Name The name of the item to remove
+	 * @param ItemRowName Name of the row in the item table
 	 * @param Amount The amount of the item to remove
 	 * @return True if it was successfully removed
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
-	bool RemoveItem(FString Name, int Amount);
+	bool RemoveItem(FName ItemRowName, int Amount);
 
 	/**
 	 * Drops the item, if found, to the ground. Cannot drop more than exist in the Inventory.
 	 * If amount is more than exist in the inventory, then it will drop up to the number in the inventory, and return
 	 * success.
 	 * 
-	 * @param Name Name of the item to drop
+	 * @param ItemRowName Name of the row in the item table, to drop to the floor
 	 * @param Amount Amount of the item to drop
 	 * @return True, if an item has been dropped
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
-	bool DropItem(FString Name, int Amount, FTransform DropLocation);
+	bool DropItem(FName ItemRowName, int Amount, FTransform DropLocation);
 
 	/** 
 	 * @return A list of slots within this inventory.
@@ -142,7 +140,7 @@ public:
 	 * name - order alphabetically by the name (acs)
 	 * amount - order by the amount (acs)
 	 *
-	 * Add '-' to the start of the field name to reverse the ordering.
+	 * Add '-' to the start of the field name to reverse the ordering. E.g. '-weight' reverses the weight sorting
 	 * 
 	 * @param FieldName The field to order the returned array by.
 	 * @return An ordered list of inventory slots

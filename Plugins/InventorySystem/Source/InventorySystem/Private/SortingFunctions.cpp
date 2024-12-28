@@ -1,7 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "SortingFunctions.h"
+#include "Item.h"
 
 SortingFunctions::SortingFunctions()
 {
@@ -14,24 +12,24 @@ SortingFunctions::~SortingFunctions()
 bool SortingFunctions::CompareFInventorySlotNamesAsc(const FInventorySlot& a, const FInventorySlot& b)
 {
 	// Ignore capital letters or it doesn't sort properly.
-	return (a.Item.Name.ToLower().Compare(b.Item.Name.ToLower()) <= 0);
+	return (a.Item.GetRow<FItem>("")->Name.ToLower().Compare(b.Item.GetRow<FItem>("")->Name.ToLower()) <= 0);
 }
 
 bool SortingFunctions::CompareFInventorySlotNamesDesc(const FInventorySlot& a, const FInventorySlot& b)
 {
 	// Ignore capital letters or it doesn't sort properly.
-	return (a.Item.Name.ToLower().Compare(b.Item.Name.ToLower()) > 0);
+	return (a.Item.GetRow<FItem>("")->Name.ToLower().Compare(b.Item.GetRow<FItem>("")->Name.ToLower()) > 0);
 }
 
 bool SortingFunctions::CompareFInventorySlotWeightsAsc(const FInventorySlot& a, const FInventorySlot& b)
 {
-	return a.Item.Weight >= b.Item.Weight;
+	return a.Item.GetRow<FItem>("")->Weight >= b.Item.GetRow<FItem>("")->Weight;
 	
 }
 
 bool SortingFunctions::CompareFInventorySlotWeightsDesc(const FInventorySlot& a, const FInventorySlot& b)
 {
-	return a.Item.Weight < b.Item.Weight;
+	return a.Item.GetRow<FItem>("")->Weight < b.Item.GetRow<FItem>("")->Weight;
 	
 }
 

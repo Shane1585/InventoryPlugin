@@ -1,9 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "InventorySlotUIWrapper.h"
-
-#include "IDetailTreeNode.h"
+#include "Item.h"
 
 
 void UInventorySlotUIWrapper::Init(FInventorySlot SlotData, UInventoryComponent* InventoryComponent)
@@ -12,21 +8,26 @@ void UInventorySlotUIWrapper::Init(FInventorySlot SlotData, UInventoryComponent*
 	RelatedInventory = InventoryComponent;
 }
 
+FName UInventorySlotUIWrapper::GetRowName()
+{
+	return Slot.Item.RowName;
+}
+
 FString UInventorySlotUIWrapper::GetName()
 {
-	return Slot.Item.Name;
+	return Slot.Item.GetRow<FItem>("")->Name;
 }
 
 FString UInventorySlotUIWrapper::GetSingleItemWeight()
 {
 	// get rid of extra 0's from the weight
-	return FString::SanitizeFloat(Slot.Item.Weight);
+	return FString::SanitizeFloat(Slot.Item.GetRow<FItem>("")->Weight);
 }
 
 FString UInventorySlotUIWrapper::GetTotalSlotWeight()
 {
 	// get rid of extra 0's from the total weight
-	return FString::SanitizeFloat(Slot.Item.Weight * Slot.Amount);
+	return FString::SanitizeFloat(Slot.Item.GetRow<FItem>("")->Weight * Slot.Amount);
 }
 
 FString UInventorySlotUIWrapper::GetAmount()
@@ -39,14 +40,14 @@ FSlateBrush UInventorySlotUIWrapper::GetInventoryIconBrush()
 	// Sets brush up with an image size and icon
 	// SlateBrushes are used in UI for images.
 	FSlateBrush Brush;
-	Brush.SetResourceObject(Slot.Item.InventoryIcon);
+	Brush.SetResourceObject(Slot.Item.GetRow<FItem>("")->InventoryIcon);
 	Brush.ImageSize = FVector2D(64, 64);
 	return Brush;
 }
 
 bool UInventorySlotUIWrapper::HasInventoryIcon()
 {
-	return IsValid(Slot.Item.InventoryIcon);
+	return IsValid(Slot.Item.GetRow<FItem>("")->InventoryIcon);
 }
 
 
