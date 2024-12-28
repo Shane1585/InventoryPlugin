@@ -20,6 +20,7 @@ class INVENTORYSYSTEM_API UInventoryComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
+// default functions ---------------------------------------------------------------------------------------------------
 public:	
 	// Sets default values for this component's properties
 	UInventoryComponent();
@@ -31,11 +32,14 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	
+
+
+// variables -----------------------------------------------------------------------------------------------------------
+private:
 	/**
 	 * List of slots containing items and other slot data (such as amount of an item) in this inventory.
 	 */
-	UPROPERTY(BlueprintType, EditAnywhere, Category="Inventory")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Inventory", meta=(AllowPrivateAccess = "true"))
 	TArray<FInventorySlot> Slots;
 	
 	/**
@@ -45,7 +49,7 @@ public:
 	 *
 	 * Carry weight is disabled with a value of 0 or less in this variable.
 	 */
-	UPROPERTY(BlueprintType, EditAnywhere, BlueprintReadWrite, Category="Item Effects")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Inventory", meta=(AllowPrivateAccess = "true"))
 	float CarryWeightLimit = 0;
 
 	/**
@@ -53,16 +57,72 @@ public:
 	 * Defaults to false, should always be false for non-characters, which do not have a move speed.
 	 * Should always be false for characters with a weight limit 0 inventory.
 	 */
-	UPROPERTY(BlueprintType, EditAnywhere, BlueprintReadWrite, Category="Inventory Effects")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Inventory", meta=(AllowPrivateAccess = "true"))
 	bool IsEncumbered = false;
 
 	/**
 	 * How much slower to make the owning character when the inventory is over the weight limit
 	 * (multiplier on base speed)
 	 */
-	UPROPERTY(BlueprintType, EditAnywhere, BlueprintReadWrite, Category="Inventory Effects")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Inventory", meta=(AllowPrivateAccess = "true"))
 	float MoveSpeedMultiplierWhileEncumbered = 0.5;
+
+
+// getters and setters -------------------------------------------------------------------------------------------------
+public:
+	/**
+	 * @param NewSlots Sets the slots in the inventory
+	 *
+	 * Also recalculates encumberment
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	void SetSlots(TArray<FInventorySlot> NewSlots);
+
+	/**
+	 * @returns The slots contained in the inventory
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	TArray<FInventorySlot> GetSlots();
+
+	/**
+	 * @param NewCarryWeightLimit Sets the carry weight limit for the inventory
+	 *
+	 * Also recalculates encumberment
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	void SetCarryWeightLimit(float NewCarryWeightLimit);
+
+	/**
+	 * @returns The slots contained in the inventory
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	float GetCarryWeightLimit();
+
+	/**
+	 * This has no setter, because IsEncumbered is controlled by the RefreshEncumberment function, and other functions.
+	 * It should not be set directy.
+	 * 
+	 * @returns If the owner of the inventory is encumbered
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	float GetIsEncumbered();
+
+	/**
+	 * @param NewMoveSpeedMultiplierWhileEncumbered The move speed modifier for the character when encumbered
+	 *
+	 * Also recalculates encumberment.
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	void SetMoveSpeedMultiplierWhileEncumbered(float NewMoveSpeedMultiplierWhileEncumbered);
+
+	/**
+	 * @returns The move speed modifier for the owning character when encumbered
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	float GetMoveSpeedMultiplierWhileEncumbered();
 	
+// other functions -----------------------------------------------------------------------------------------------------
+public:
 	/**
 	 * Whether or not this inventory has an item with a matching name.
 	 * 
@@ -117,12 +177,6 @@ public:
 	bool HasAWeightLimit();
 	
 	/**
-	 * @return How much weight can be carried before becoming encumbered. 0 if disabled, or negative.
-	 */
-	UFUNCTION(BlueprintCallable, Category="Inventory")
-	float GetCarryWeightLimit();
-
-	/**
 	 * @return The amount of weight being carried in the inventory.
 	 */
 	UFUNCTION(BlueprintCallable, Category="Inventory")
@@ -145,6 +199,7 @@ public:
 	 * @param FieldName The field to order the returned array by.
 	 * @return An ordered list of inventory slots
 	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
 	TArray<FInventorySlot> GetOrderBy(FString FieldName);
 
 	/**

@@ -16,67 +16,84 @@ class INVENTORYSYSTEM_API UInventorySlotUIWrapper : public UObject
 {
 	GENERATED_BODY()
 
-public:
 	
+// variables -----------------------------------------------------------------------------------------------------------
+private:
 	/**
 	 * Slots to show in the UI
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory slot details")
 	FInventorySlot Slot;
 
 	/**
 	 * The inventory that the slot exists in
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory slot details")
 	UInventoryComponent* RelatedInventory;
+
 	
+// getters and setters -------------------------------------------------------------------------------------------------
+public:
+	/**
+	 * @return The slot being stored in this wrapper (use Init function for setter)
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	FInventorySlot GetSlot();
+	
+	/**
+	 * @return The related inventory for this wrapper (use Init function for setter)
+	 */
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	UInventoryComponent* GetRelatedInventory();
+
 	/**
 	 * Sets this up to have the inventory data to show
 	 * 
 	 * @param SlotData The slots to show in the UI
 	 */
-	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
+	UFUNCTION(BlueprintCallable, Category="Inventory")
 	void Init(FInventorySlot SlotData, UInventoryComponent* InventoryComponent);
 
+	
+// other functions -----------------------------------------------------------------------------------------------------
+public:
 	/**
 	 * @return The name of the row for the item in the table
 	 */
-	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
+	UFUNCTION(BlueprintCallable, Category="Inventory")
 	FName GetRowName();
 	
 	/**
 	 * @return The name of the item in this slot
 	 */
-	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
+	UFUNCTION(BlueprintCallable, Category="Inventory")
 	FString GetName();
 
 	/**
 	 * @return The weight of one of the items in this slot
 	 */
-	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
+	UFUNCTION(BlueprintCallable, Category="Inventory")
 	FString GetSingleItemWeight();
 
 	/**
 	 * @return The total weight of one of the items in this slot
 	 */
-	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
+	UFUNCTION(BlueprintCallable, Category="Inventory")
 	FString GetTotalSlotWeight();
 
 	/**
 	 * @return The amount of the item in this slot
 	 */
-	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
+	UFUNCTION(BlueprintCallable, Category="Inventory")
 	FString GetAmount();
 
 	/**
 	 * @return A slate brush containing an inventory icon texture
 	 */
-	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
+	UFUNCTION(BlueprintCallable, Category="Inventory")
 	FSlateBrush GetInventoryIconBrush();
 
 	/**
 	 * @return True, if there is an icon to show in the slot
 	 */
-	UFUNCTION(BlueprintCallable, Category = "Inventory slot details")
+	UFUNCTION(BlueprintCallable, Category="Inventory")
 	bool HasInventoryIcon();
 };

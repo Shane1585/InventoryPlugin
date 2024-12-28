@@ -14,19 +14,19 @@ struct INVENTORYSYSTEM_API FItem: public FTableRowBase
 	/**
 	 * Name for the item
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Inventory")
 	FString Name;
 
 	/**
 	 * Weight for a single one of this item
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Inventory")
 	float Weight;
 
 	/**
 	 * A 2D Texture used for the inventory icon. Defaults if not set to prevent crashes.
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Inventory")
 	UTexture2D* InventoryIcon = UTexture2D::CreateTransient(64,64);
 
 	FItem()

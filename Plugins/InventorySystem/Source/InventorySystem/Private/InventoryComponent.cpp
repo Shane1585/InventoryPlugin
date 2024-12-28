@@ -7,6 +7,7 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
+// default functions ---------------------------------------------------------------------------------------------------
 // Sets default values for this component's properties
 UInventoryComponent::UInventoryComponent()
 {
@@ -37,6 +38,59 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	// ...
 }
 
+
+// getters and setters -------------------------------------------------------------------------------------------------
+void UInventoryComponent::SetSlots(TArray<FInventorySlot> NewSlots)
+{
+	this->Slots = NewSlots;
+	RecalculateEncumberment();
+}
+
+TArray<FInventorySlot> UInventoryComponent::GetSlots()
+{
+	return Slots;
+}
+
+void UInventoryComponent::SetCarryWeightLimit(float NewCarryWeightLimit)
+{
+	this->CarryWeightLimit = NewCarryWeightLimit;
+	
+	RecalculateEncumberment();
+}
+
+float UInventoryComponent::GetCarryWeightLimit()
+{
+	if(HasAWeightLimit())
+	{
+		return CarryWeightLimit;
+	}
+
+	return 0;
+}
+
+float UInventoryComponent::GetIsEncumbered()
+{
+	return IsEncumbered;
+}
+
+void UInventoryComponent::SetMoveSpeedMultiplierWhileEncumbered(float NewMoveSpeedMultiplierWhileEncumbered)
+{
+	this->MoveSpeedMultiplierWhileEncumbered = NewMoveSpeedMultiplierWhileEncumbered;
+
+	// Encumberment removed first and then re-calculated, as the movement speed isn't changed from what it was
+	// in recalculate. Removing first makes sure it's correct.
+	RemoveEncumberment();
+	RecalculateEncumberment();
+}
+
+
+float UInventoryComponent::GetMoveSpeedMultiplierWhileEncumbered()
+{
+	return MoveSpeedMultiplierWhileEncumbered;
+}
+
+
+// other functions -----------------------------------------------------------------------------------------------------
 bool UInventoryComponent::HasItem(FName ItemRowName)
 {
 	// for every slot
@@ -184,15 +238,7 @@ bool UInventoryComponent::HasAWeightLimit()
 	return (CarryWeightLimit > 0);
 }
 
-float UInventoryComponent::GetCarryWeightLimit()
-{
-	if(HasAWeightLimit())
-	{
-		return CarryWeightLimit;
-	}
 
-	return 0;
-}
 
 float UInventoryComponent::GetCurrentWeight()
 {

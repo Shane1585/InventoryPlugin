@@ -11,9 +11,13 @@
 class INVENTORYSYSTEM_API SortingFunctions
 {
 public:
+// constructor and deconstructors --------------------------------------------------------------------------------------t	
 	SortingFunctions();
 	~SortingFunctions();
 
+	
+// other functions -----------------------------------------------------------------------------------------------------
+public:
 	/**
 	 * @param a InventorySlot A
 	 * @param b InventorySlot B

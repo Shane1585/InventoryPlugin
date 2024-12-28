@@ -4,6 +4,7 @@
 
 #include "Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h"
 
+// default functions ---------------------------------------------------------------------------------------------------
 // Sets default values
 AGroundItem::AGroundItem()
 {
@@ -26,6 +27,38 @@ void AGroundItem::BeginPlay()
 	Super::BeginPlay();
 }
 
+
+// setters and getters -------------------------------------------------------------------------------------------------
+void AGroundItem::SetInventoryDetails(FInventorySlot NewInventoryDetails)
+{
+	this->InventoryDetails = NewInventoryDetails;
+}
+
+FInventorySlot AGroundItem::GetInventoryDetails()
+{
+	return InventoryDetails;
+}
+
+void AGroundItem::SetInteractTriggerBox(UBoxComponent* NewInteractTriggerBox, FGroundItemDetail NewActorDetails)
+{
+	// Destroys current trigger box
+	this->InteractTriggerBox->DestroyComponent();
+
+	// Sets up new collision box without the collision stuff (as this might want to be customised)
+	// Sets up overlap events
+	this->InteractTriggerBox = NewInteractTriggerBox;
+	this->InteractTriggerBox->SetupAttachment(this->RootComponent);
+	this->InteractTriggerBox->SetBoxExtent(FVector(NewActorDetails.InteractAreaScale));
+	this->OnActorBeginOverlap.AddDynamic(this, &AGroundItem::PickupItem);
+}
+
+UBoxComponent* AGroundItem::GetInteractTriggerBox()
+{
+	return InteractTriggerBox;
+}
+
+
+// other functions -----------------------------------------------------------------------------------------------------
 // Called every frame
 void AGroundItem::Tick(float DeltaTime)
 {

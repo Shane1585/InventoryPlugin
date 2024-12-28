@@ -1,6 +1,7 @@
 #include "InventoryInteractArea.h"
 #include "ParentInventoryUIComponent.h"
 
+// default functions ---------------------------------------------------------------------------------------------------
 // Sets default values for this component's properties
 UInventoryInteractArea::UInventoryInteractArea()
 {
@@ -9,7 +10,6 @@ UInventoryInteractArea::UInventoryInteractArea()
 	PrimaryComponentTick.bCanEverTick = true;
 
 }
-
 
 // Called when the game starts
 void UInventoryInteractArea::BeginPlay()
@@ -21,6 +21,45 @@ void UInventoryInteractArea::BeginPlay()
 }
 
 
+// getters and setters -------------------------------------------------------------------------------------------------
+void UInventoryInteractArea::SetInteractTriggerBox(UBoxComponent* NewInteractTriggerBox)
+{
+	// Destroy old trigger box
+	this->InteractTriggerBox->DestroyComponent();
+
+	// Set the new one
+	this->InteractTriggerBox = NewInteractTriggerBox;
+
+	// Note: other setup like collision etc. has not been set up here, as person using this function might be calling
+	// this to change what it does.
+	
+	// attaches trigger box to this actor so they move together
+	this->InteractTriggerBox->AttachToComponent(this->GetOwner()->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+
+	// adds events for begin and end overlap
+	this->GetOwner()->OnActorBeginOverlap.AddDynamic(this, &UInventoryInteractArea::OverlappingInventory);
+	this->GetOwner()->OnActorEndOverlap.AddDynamic(this, &UInventoryInteractArea::StoppedOverlappingInventory);
+
+}
+
+UBoxComponent* UInventoryInteractArea::GetInteractTriggerBox()
+{
+	return this->InteractTriggerBox;
+}
+
+void UInventoryInteractArea::SetTriggerBoxScale(FVector NewTriggerBoxScale)
+{
+	this->TriggerBoxScale = NewTriggerBoxScale;
+	this->InteractTriggerBox->SetBoxExtent(TriggerBoxScale);
+}
+
+FVector UInventoryInteractArea::GetTriggerBoxScale()
+{
+	return this->TriggerBoxScale;
+}
+
+
+// other functions -----------------------------------------------------------------------------------------------------
 // Called every frame
 void UInventoryInteractArea::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
@@ -64,7 +103,7 @@ void UInventoryInteractArea::OverlappingInventory(AActor* OverlappedActor, AActo
 			for(int i = 0; i < UIComponents.Num(); i++)
 			{
 				// sets up the overlapping actors inventory to be show able on players UI, if not a player inventory
-				if (!UIComponents[i]->IsPlayerInventory)
+				if (!UIComponents[i]->GetIsPlayerInventory())
 				{
 					// 2nd UI component on the player is the non-player inventory UI
 					UIComponents[1]->EnableInventoryUI(InventoryComponents[0]);
@@ -86,7 +125,5 @@ void UInventoryInteractArea::StoppedOverlappingInventory(AActor* OverlappedActor
 		UIComponents[1]->DisableInventoryUI();
 
 	}
-
-
 }
 

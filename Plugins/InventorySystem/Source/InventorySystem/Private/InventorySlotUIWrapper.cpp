@@ -1,6 +1,16 @@
 #include "InventorySlotUIWrapper.h"
 #include "Item.h"
 
+// getters and setters -------------------------------------------------------------------------------------------------
+FInventorySlot UInventorySlotUIWrapper::GetSlot()
+{
+	return Slot;
+}
+
+UInventoryComponent* UInventorySlotUIWrapper::GetRelatedInventory()
+{
+	return RelatedInventory;
+}
 
 void UInventorySlotUIWrapper::Init(FInventorySlot SlotData, UInventoryComponent* InventoryComponent)
 {
@@ -8,6 +18,8 @@ void UInventorySlotUIWrapper::Init(FInventorySlot SlotData, UInventoryComponent*
 	RelatedInventory = InventoryComponent;
 }
 
+
+// other functions -----------------------------------------------------------------------------------------------------
 FName UInventorySlotUIWrapper::GetRowName()
 {
 	return Slot.Item.RowName;

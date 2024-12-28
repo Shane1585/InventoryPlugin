@@ -17,25 +17,25 @@ struct INVENTORYSYSTEM_API FGroundItemDetail: public FTableRowBase
 	/**
 	 * Name for the item
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Inventory")
 	FString Name;
 
 	/**
 	 * Scale for item on the floor (mesh)
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Inventory")
 	FVector ItemScale;
 
 	/**
 	 * The scale of the area in which you can pick up the item.
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Inventory")
 	FVector InteractAreaScale;
 
 	/**
 	 * The location of the static mesh within the files.
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item Detail")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Inventory")
 	FString StaticMeshPath;
 	
 	FGroundItemDetail()
