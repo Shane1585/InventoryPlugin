@@ -42,3 +42,57 @@ bool SortingFunctions::CompareFInventorySlotAmountsDesc(const FInventorySlot& a,
 {
 	return a.Amount < b.Amount;
 }
+
+TArray<FInventorySlot> SortingFunctions::BubbleSortNameAsc(TArray<FInventorySlot> Slots)
+{
+	bool SwappedSomething = false;
+
+	// loop through the array
+	for (int a = 0; a < Slots.Num(); a++)
+	{
+		SwappedSomething = false;
+		// loop through the rest of the array
+		for (int b = 0; b < Slots.Num() - a - 1; b++)
+		{
+			if ((Slots[b].Item.GetRow<FItem>("")->Name.ToLower()) > (Slots[b + 1].Item.GetRow<FItem>("")->Name.ToLower()))
+			{
+				Slots.Swap(b, b + 1);
+				SwappedSomething = true;
+			}
+		}
+
+		if (!SwappedSomething)
+		{
+			break; // exit out of the loop
+		}
+	}
+	
+	return Slots;
+}
+
+TArray<FInventorySlot> SortingFunctions::BubbleSortWeightAsc(TArray<FInventorySlot> Slots)
+{
+	bool SwappedSomething = false;
+
+	// loop through the array
+	for (int a = 0; a < Slots.Num(); a++)
+	{
+		SwappedSomething = false;
+		// loop through the rest of the array
+		for (int b = 0; b < Slots.Num() - a - 1; b++)
+		{
+			if ((Slots[b].Item.GetRow<FItem>("")->Weight) > (Slots[b + 1].Item.GetRow<FItem>("")->Weight))
+			{
+				Slots.Swap(b, b + 1);
+				SwappedSomething = true;
+			}
+		}
+
+		if (!SwappedSomething)
+		{
+			break; // exit out of the loop
+		}
+	}
+	
+	return Slots;
+}

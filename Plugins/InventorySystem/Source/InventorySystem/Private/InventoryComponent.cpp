@@ -272,7 +272,8 @@ TArray<FInventorySlot> UInventoryComponent::GetOrderBy(FString FieldName)
 	// Tried to make this a switch case but didn't work.
 	if(FieldName.ToLower() == "name")
 	{
-		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNamesAsc);
+		SortedSlots = SortingFunctions::BubbleSortNameAsc(SortedSlots);
+		//SortedSlots.Sort(SortingFunctions::CompareFInventorySlotNamesAsc);
 	}
 	else if (FieldName.ToLower() == "-name")
 	{
@@ -288,7 +289,8 @@ TArray<FInventorySlot> UInventoryComponent::GetOrderBy(FString FieldName)
 	}
 	else if (FieldName.ToLower() == "weight")
 	{
-		SortedSlots.Sort(SortingFunctions::CompareFInventorySlotWeightsAsc);
+		SortedSlots = SortingFunctions::BubbleSortWeightAsc(SortedSlots);
+		//SortedSlots.Sort(SortingFunctions::CompareFInventorySlotWeightsAsc);
 	}
 	else if (FieldName.ToLower() == "-weight")
 	{
