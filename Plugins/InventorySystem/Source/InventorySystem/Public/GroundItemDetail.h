@@ -1,6 +1,8 @@
 #pragma once
 
+#include "Engine/DataTable.h"
 #include "CoreMinimal.h"
+
 #include "GroundItemDetail.generated.h"
 
 /**

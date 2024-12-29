@@ -1,6 +1,9 @@
 #pragma once
 
+#include "CoreUObject.h" // required to package plugin
+#include "Engine/DataTable.h"
 #include "CoreMinimal.h"
+
 #include "InventorySlot.generated.h"
 
 /**
@@ -17,7 +20,7 @@ struct INVENTORYSYSTEM_API FInventorySlot
 	/**
 	 * Item held in this slot
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(RowType="FItem"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Inventory", meta=(RowType="FItem"))
 	FDataTableRowHandle Item;
 
 	/**

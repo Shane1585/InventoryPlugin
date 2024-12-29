@@ -1,10 +1,14 @@
 #pragma once
-
+#include "Engine/DataTable.h"
 #include "CoreMinimal.h"
-#include "InventorySlot.h"
 #include "Components/BoxComponent.h"
 #include "Engine/StaticMeshActor.h"
 #include "GameFramework/Actor.h"
+#include "Engine/StaticMesh.h"
+#include "Components/StaticMeshComponent.h"
+
+#include "GroundItemDetail.h"
+#include "InventorySlot.h"
 #include "GroundItem.generated.h"
 
 /**

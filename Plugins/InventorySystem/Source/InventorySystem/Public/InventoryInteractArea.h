@@ -3,6 +3,9 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Components/BoxComponent.h"
+#include "Engine/World.h"
+#include "GameFramework/Pawn.h"
+
 #include "InventoryInteractArea.generated.h"
 
 /**

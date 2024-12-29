@@ -1,6 +1,8 @@
 #pragma once
-
+#include "Engine/DataTable.h"
+#include "Engine/Texture2D.h"
 #include "CoreMinimal.h"
+
 #include "Item.generated.h"
 
 /**

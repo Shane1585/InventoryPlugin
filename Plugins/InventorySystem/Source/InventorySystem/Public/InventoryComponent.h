@@ -1,9 +1,10 @@
 #pragma once
-
 #include "CoreMinimal.h"
-#include "InventorySlot.h"
 #include "Components/ActorComponent.h"
+#include "Engine/World.h"
+
 #include "InventorySlotUIWrapper.h"
+#include "InventorySlot.h"
 #include "InventoryComponent.generated.h"
 
 

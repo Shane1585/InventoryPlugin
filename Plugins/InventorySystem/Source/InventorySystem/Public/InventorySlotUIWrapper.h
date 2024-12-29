@@ -1,6 +1,9 @@
 #pragma once
 
+#include "Engine/Texture2D.h"
+#include "Slate.h" // required to package plugin
 #include "CoreMinimal.h"
+
 #include "InventorySlot.h"
 #include "InventorySlotUIWrapper.generated.h"
 
