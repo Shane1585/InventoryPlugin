@@ -191,24 +191,37 @@ bool UInventoryComponent::DropItem(FName ItemRowName, int Amount, FTransform Dro
 		// Get the row in FGroundItemDetail datatable to match the name of the item in the inventory slot
 		FDataTableRowHandle ActorDetails;
 		ActorDetails.DataTable = Cast<UDataTable>(FSoftObjectPath(TEXT("/InventorySystem/DataTables/DT_GroundItemTable.DT_GroundItemTable")).ResolveObject());
-		FGroundItemDetail* FoundDetails = ActorDetails.DataTable->FindRow<FGroundItemDetail>(DroppedSlot.Item.RowName, "");
+
+		if (ActorDetails.DataTable != nullptr && ActorDetails.DataTable.IsResolved())
+		{
+			FGroundItemDetail* FoundDetails = ActorDetails.DataTable->FindRow<FGroundItemDetail>(DroppedSlot.Item.RowName, "");
 		
-		// If it finds a matching row, 
-		if (FoundDetails != nullptr)
+			// If it finds a matching row, 
+			if (FoundDetails != nullptr)
+			{
+				// spawn the item in the world, then remove it from the inventory
+				AGroundItem* ThisItem = GetWorld()->SpawnActor<AGroundItem>();
+				ThisItem->InitialiseItem(DropLocation, AsConst(*FoundDetails), DroppedSlot);
+				RemoveItem(ItemRowName, Amount);
+				return true; // if removed, return successful
+			}
+			else
+			{
+				// spawn a default mesh in the world, then remove it from the inventory
+				AGroundItem* ThisItem = GetWorld()->SpawnActor<AGroundItem>();
+				ThisItem->InitialiseItem(DropLocation, FGroundItemDetail(), DroppedSlot);
+				RemoveItem(ItemRowName, Amount);
+				return true; // if removed, return successful
+			}
+		} else
 		{
-			// spawn the item in the world, then remove it from the inventory
-			AGroundItem* ThisItem = GetWorld()->SpawnActor<AGroundItem>();
-			ThisItem->InitialiseItem(DropLocation, AsConst(*FoundDetails), DroppedSlot);
-			RemoveItem(ItemRowName, Amount);
-			return true; // if removed, return successful
-		}
-		else
-		{
-			// spawn a default mesh in the world, then remove it from the inventory
-			AGroundItem* ThisItem = GetWorld()->SpawnActor<AGroundItem>();
-			ThisItem->InitialiseItem(DropLocation, FGroundItemDetail(), DroppedSlot);
-			RemoveItem(ItemRowName, Amount);
-			return true; // if removed, return successful
+			if(GEngine)
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Error with accessing ground item datatable. This can happen because the datatable is corrupt."));	
+				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Sometimes reloading fixes the issue, sometimes validating unreal engine fixes the issue."));
+				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Sometimes the datatable needs to be re-made."));
+				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("It will sometimes start working again on its own."));
+			}
 		}
 	}
 

@@ -23,7 +23,7 @@ bool SortingFunctions::CompareFInventorySlotNamesDesc(const FInventorySlot& a, c
 
 bool SortingFunctions::CompareFInventorySlotWeightsAsc(const FInventorySlot& a, const FInventorySlot& b)
 {
-	return a.Item.GetRow<FItem>("")->Weight >= b.Item.GetRow<FItem>("")->Weight;
+	return a.Item.GetRow<FItem>("")->Weight * a.Amount >= b.Item.GetRow<FItem>("")->Weight * b.Amount;
 	
 }
 
@@ -81,7 +81,7 @@ TArray<FInventorySlot> SortingFunctions::BubbleSortWeightAsc(TArray<FInventorySl
 		// loop through the rest of the array
 		for (int b = 0; b < Slots.Num() - a - 1; b++)
 		{
-			if ((Slots[b].Item.GetRow<FItem>("")->Weight) > (Slots[b + 1].Item.GetRow<FItem>("")->Weight))
+			if ((Slots[b].Item.GetRow<FItem>("")->Weight * Slots[b].Amount) > (Slots[b + 1].Item.GetRow<FItem>("")->Weight * Slots[b+1].Amount))
 			{
 				Slots.Swap(b, b + 1);
 				SwappedSomething = true;

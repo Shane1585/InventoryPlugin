@@ -40,6 +40,7 @@ struct INVENTORYSYSTEM_API FItem: public FTableRowBase
 
 	/**
 	 * This decides what == does when comparing two FItems
+	 * Checks they match on the name and the weight.
 	 * @param Other The other item to check
 	 * @return True, if the two match.
 	 */
