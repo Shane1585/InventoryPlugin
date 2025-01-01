@@ -163,7 +163,7 @@ bool UInventoryComponent::RemoveItem(FName ItemRowName, int Amount)
 bool UInventoryComponent::DropItem(FName ItemRowName, int Amount, FTransform DropLocation)
 {
 	//Which slot details are being dropped, and if it can be found
-	FInventorySlot DroppedSlot;
+	FInventorySlot DroppedSlot = FInventorySlot();
 	bool FoundItem = false;
 
 	// Checks the slots for the item by name
@@ -178,7 +178,8 @@ bool UInventoryComponent::DropItem(FName ItemRowName, int Amount, FTransform Dro
 			{
 				Amount = ThisSlot.Amount;
 			}
-			DroppedSlot = ThisSlot;
+			DroppedSlot.Amount = Amount;
+			DroppedSlot.Item = ThisSlot.Item;
 			FoundItem = true;
 			break; // don't keep searching, exit the for loop
 		}
@@ -191,7 +192,7 @@ bool UInventoryComponent::DropItem(FName ItemRowName, int Amount, FTransform Dro
 		FDataTableRowHandle ActorDetails;
 		ActorDetails.DataTable = Cast<UDataTable>(FSoftObjectPath(TEXT("/InventorySystem/DataTables/DT_GroundItemTable.DT_GroundItemTable")).ResolveObject());
 		FGroundItemDetail* FoundDetails = ActorDetails.DataTable->FindRow<FGroundItemDetail>(DroppedSlot.Item.RowName, "");
-
+		
 		// If it finds a matching row, 
 		if (FoundDetails != nullptr)
 		{
