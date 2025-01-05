@@ -218,8 +218,8 @@ bool UInventoryComponent::DropItem(FName ItemRowName, int Amount, FTransform Dro
 			if(GEngine)
 			{
 				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Error with accessing ground item datatable. This can happen because the datatable is corrupt."));	
-				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Sometimes reloading fixes the issue, sometimes validating unreal engine fixes the issue."));
-				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Sometimes the datatable needs to be re-made."));
+				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("The most reliable fix is opening the datatable in the unreal engine first, and then trying again."));
+				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("This happens on some but not all PCs. This is because unreal engines datatables are sometimes unreliable."));
 				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("It will sometimes start working again on its own."));
 			}
 		}
